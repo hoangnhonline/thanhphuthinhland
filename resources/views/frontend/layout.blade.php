@@ -334,6 +334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</article><!-- /block-news-sidebar -->
 				</section><!-- /block-site-right -->
 				@endif
+				@if( \Request::route()->getName() == 'home')
 				<section>
 					<article class="block block-inews block-news-new">
 						<div class="block-advisory">
@@ -380,6 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</article><!-- /block-inews -->
 				</section>
+				@endif
 			</section>
 		</section>
 
