@@ -72,7 +72,7 @@
 										</div>
 									</div><!-- /form-group -->
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Loại nhà đất <span>(*)</span>:</label>
+										<label class="col-sm-3 control-label">Loại BĐS <span>(*)</span>:</label>
 										<div class="col-sm-4">
 									  		<select class="selectpicker form-control" name="estate_type_id" id="estate_type_id">
 												<option value="">-- Chọn Loại bất động sản --</option>
@@ -154,7 +154,7 @@
 										</div>
 									</div><!-- /form-group -->
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Diện tích:</label>
+										<label class="col-sm-3 control-label">Diện tích<span>(*)</span>:</label>
 										<div class="col-sm-4">
 											<input type="text" name="area" class="form-control inline-block form-control2 form-control-res" style="width: 85%;">
 											<span class="inline-block" style="margin: 8px 0 0 5px;">m2</span>

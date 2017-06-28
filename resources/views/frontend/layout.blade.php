@@ -625,7 +625,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				});
 			@endif
 		});
-		
+		$(document).ready(function(){
+			$('#btnSearch').click(function(){		
+				if($('#estate_type_id').val() == ''){
+					swal({ title: '', text: 'Vui lòng chọn loại bất động sản.', type: 'error' });
+					return false;
+				}		
+			});
+			$('#tab-search li a').click(function(){
+				obj = $(this);
+				var type = obj.data('type');
+				$('#type').val(type);
+				$('#tab-search li').removeClass('active');
+				obj.parents('li').addClass('active');
+
+				$.ajax({
+					url : '{{ route('get-child') }}',
+					data : {
+						mod : 'estate_type',
+						col : 'type',
+						id : type
+					},
+					type : 'POST',
+					dataType : 'html',
+					success : function(data){
+						$('#estate_type_id').html(data).selectpicker('refresh');
+					}
+				});
+				$.ajax({
+					url : '{{ route('get-child') }}',
+					data : {
+						mod : 'price',
+						col : 'type',
+						id : type
+					},
+					type : 'POST',
+					dataType : 'html',
+					success : function(data){
+						$('#price_id').html(data).selectpicker('refresh');
+					}
+				});
+			});
+		});
 	</script>
 
 </body>

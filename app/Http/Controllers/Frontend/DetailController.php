@@ -215,7 +215,7 @@ class DetailController extends Controller
             'contact_mobile' => 'required'
         ],
         [            
-            'estate_type_id.required' => 'Bạn chưa chọn loại bất động sản',
+            'estate_type_id.required' => 'Bạn chưa chọn loại BĐS',
             'district_id.required' => 'Bạn chưa chọn quận',
             'ward_id.required' => 'Bạn chưa chọn phường',
             'street_id.required' => 'Bạn chưa chọn đường phố',
