@@ -13,7 +13,7 @@ if(!isset($project_id)){
 ?>
 <section class="block block-2-col container">
 	<div class="row">
-		<div class="col-sm-4 col-xs-12">
+		<div class="col-sm-3 col-xs-12">
 			<div class="block-searh-bar">
 				<article class="block-box-search block-box-search-home">
 					<div class="block-title">
@@ -89,7 +89,7 @@ if(!isset($project_id)){
 				</article><!-- /block-box-search -->				
 			</div>
 		</div><!-- /col-sm-4 col-xs-12 -->
-		<div class="col-sm-8 col-xs-12">
+		<div class="col-sm-9 col-xs-12">
 			<div class="block-slider-home">
 				<div class="owl-carousel dotsData owl-style2" data-nav="true" data-margin="0" data-items='1' data-autoplayTimeout="700" data-autoplay="false" data-loop="true">
 					<?php $i = 0; ?>

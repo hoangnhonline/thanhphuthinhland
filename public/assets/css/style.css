@@ -152,8 +152,8 @@ img {
 }
 .header .header-register {
     height: 31px;
-    background: #fafafa;
-    border-bottom: 1px solid #f4f4f4;
+    background: #1d5f93;
+    border-bottom: 1px solid #004c8c;
 }
 .header-register {
     line-height: 24px;
@@ -201,6 +201,13 @@ img {
 }
 .header .header-logo .banner_adv {
     float: right;
+}
+.slogan {
+    line-height: 31px;
+    color: #fff;
+}
+.slogan i {
+    margin-right: 5px;
 }
 
 /*===== Menu Top =====*/
@@ -1021,6 +1028,9 @@ img {
 }
 .block-2-col {
     padding-top: 15px;
+}
+.block-box-search.block-box-search-home .nav-tabs>li>a {
+    font-size: 12px;
 }
 
 /*===== Breadcrumb ======*/
