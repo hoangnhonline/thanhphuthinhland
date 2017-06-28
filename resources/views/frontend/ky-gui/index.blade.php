@@ -64,10 +64,10 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label" style="padding-top: 3px;">Loại tin <span>(*)</span>:</label>
 										<div class="col-sm-9">
-									  		<input type="radio" name="type" value="1" id="type_1" {{ old('type', $type) == 1 ? "checked" : "" }}>
+									  		<input type="radio" name="type" value="1" class="radio_type" id="type_1" {{ old('type', $type) == 1 ? "checked" : "" }}>
 									  		<label for="type_1">BĐS bán</label>
 									  		&nbsp;&nbsp;&nbsp;
-									  		<input type="radio" name="type" value="2" id="type_2" {{ old('type', $type) == 2 ? "checked" : "" }}>
+									  		<input type="radio" name="type" value="2" class="radio_type" id="type_2" {{ old('type', $type) == 2 ? "checked" : "" }}>
 									  		<label for="type_1">BĐS cho thuê</label>
 										</div>
 									</div><!-- /form-group -->
@@ -480,6 +480,37 @@ $(document).ready(function() {
 $('#pac-input').on('keypress', function(e) {
     return e.which !== 13;
 });
+		$('.radio_type').click(function(){
+			obj = $(this);
+			var type = obj.val();
+			$('#type').val(type);			
+			$.ajax({
+				url : '{{ route('get-child') }}',
+				data : {
+					mod : 'estate_type',
+					col : 'type',
+					id : type
+				},
+				type : 'POST',
+				dataType : 'html',
+				success : function(data){
+					$('#estate_type_id').html(data).selectpicker('refresh');
+				}
+			});
+			$.ajax({
+				url : '{{ route('get-child') }}',
+				data : {
+					mod : 'price',
+					col : 'type',
+					id : type
+				},
+				type : 'POST',
+				dataType : 'html',
+				success : function(data){
+					$('#price_id').html(data).selectpicker('refresh');
+				}
+			});
+		});
       var files = "";
       $('#file-image').change(function(e){
          files = e.target.files;

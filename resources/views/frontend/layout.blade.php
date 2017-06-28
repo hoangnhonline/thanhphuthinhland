@@ -423,8 +423,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script src="{{ URL::asset('assets/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 	<!-- Js Common -->
 	<script src="{{ URL::asset('backend/dist/js/sweetalert2.min.js') }}"></script>
-	<script src="{{ URL::asset('assets/js/common.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/common.js') }}"></script>	
+	@if(\Request::route()->getName() != "ky-gui")
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCedG6K88zgGTC746bf-qLgf1ZAG7FUj7Q&sensor=false&libraries=places"></script> 
+	@endif
 	@yield('javascript_page')
 	<script type="text/javascript">
 		$(document).ready(function(){
