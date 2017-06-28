@@ -75,9 +75,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 	
 	<header id="header" class="header">
-		<!-- <div class="header-register">
+		<div class="header-register">
 			<div class="container">
-				<div class="logon">
+				<!-- <div class="logon">
 		            <a href="/dang-nhap.htm" rel="nofollow" title="Đăng nhập">
 		                <span>Đăng nhập</span>
 		            </a>
@@ -93,9 +93,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		                    <span>Banxehoi.com</span>
 		                </a>
 		            </div>
-				</div>
+				</div> -->
+				<div class="slogan">
+		            <p><i class="fa fa-phone"></i> Hotline : 0911 035 679 - 0915 455 551</p>
+		        </div>
 			</div>
-		</div> -->
+		</div>
 		<div class="header-logo">
 	        <div class="container">
 	            <div class="logo">
