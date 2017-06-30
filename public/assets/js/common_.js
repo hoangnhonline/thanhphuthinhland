@@ -90,11 +90,11 @@
 
         var header = parseInt($("#header").height());
         var nav = parseInt($("#mainNav").height());
-        // var slide_home = parseInt($(".block-slider-home").height());
-        // console.log(slide_home);
+        var slide_home = parseInt($(".block-slider-home").height());
+        console.log(slide_home);
         var abc = $("#site-main .container").width();
 
-        var Top1 = header + nav;
+        var Top1 = header + nav + slide_home;
         var Top2 = header + nav;
         var position = ((width_screen - abc)/2) - 117;
 
