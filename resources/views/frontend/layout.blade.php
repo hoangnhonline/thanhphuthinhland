@@ -251,7 +251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<ul class="support">
 								@foreach($supportList as $sup)
 								<li class="item-support clearfix">
-									<img src="{{ $sup->image_url ? Helper::showImage($sup->image_url) : URL::asset('assets/images/contact2.jpg') }}" alt="{!! $sup->name !!}">
+									<img src="{{ $sup->image_url ? Helper::showImage($sup->image_url) : URL::asset('assets/images/contact2.jpg') }}" alt="{!! $sup->name !!}" style="max-width:80px">
 									<div class="item-support-info">
 										<h3>{!! $sup->name !!}</h3>
 										<p>{{ $sup->phone }}</p>
