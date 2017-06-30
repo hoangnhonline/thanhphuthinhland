@@ -133,6 +133,7 @@ class DetailController extends Controller
                $seo['custom_text'] = $seo['custom_text'];
             }else{
                 $seo['title'] = $seo['description'] = $seo['keywords'] = 'Tag - '. $detail->name;
+                $seo['custom_text'] = "";
             }
             
             return view('frontend.cate.tag', compact('productList', 'socialImage', 'seo', 'detail'));
