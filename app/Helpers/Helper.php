@@ -34,6 +34,9 @@ class Helper
             }
         }
     }
+    public static function getNextOrder($table){
+        return DB::table($table)->max('display_order') + 1;
+    }
     public static function getPriceId($price, $price_unit_id, $type){
         $rs = Price::where('value_from', '<=', $price)
                     ->where('value_to', '>=', $price)

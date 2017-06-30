@@ -249,24 +249,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 						<div class="block-contents">
 							<ul class="support">
+								@foreach($supportList as $sup)
 								<li class="item-support clearfix">
-									<img src="{{ URL::asset('assets/images/contact2.jpg') }}" alt="Support">
+									<img src="{{ $sup->image_url ? Helper::showImage($sup->image_url) : URL::asset('assets/images/contact2.jpg') }}" alt="{!! $sup->name !!}">
 									<div class="item-support-info">
-										<h3>Harry Triệu</h3>
-										<p>0911 035 679</p>
-										<a target="blank" href="#"><img src="{{ URL::asset('assets/images/rb_facebook.png') }}" alt="icon"></a>
-										<a target="blank" href="#"><img src="{{ URL::asset('assets/images/icon-zalo.png') }}" alt="icon"></a>
+										<h3>{!! $sup->name !!}</h3>
+										<p>{{ $sup->phone }}</p>
+										@if($sup->facebook)
+										<a target="_blank" href="https://www.facebook.com/messages/t/{{ $sup->facebook }}"><img src="{{ URL::asset('assets/images/rb_facebook.png') }}" alt="icon facebook" style="width:27px;height:27px"></a>
+										@endif
+										@if($sup->skype)
+										<a  href="skype:{{ $sup->skype }}?chat"><img src="{{ URL::asset('assets/images/skype.jpg') }}" alt="icon skype"></a>
+										@endif
 									</div>
 								</li>
-								<li class="item-support clearfix">
-									<img src="{{ URL::asset('assets/images/contact2.jpg') }}" alt="Support">
-									<div class="item-support-info">
-										<h3>Tiến Dũng</h3>
-										<p>0916 199 715</p>
-										<a target="blank" href="#"><img src="{{ URL::asset('assets/images/rb_facebook.png') }}" alt="icon"></a>
-										<a target="blank" href="#"><img src="{{ URL::asset('assets/images/icon-zalo.png') }}" alt="icon"></a>
-									</div>
-								</li>
+								@endforeach								
 							</ul>
 						</div>
 					</article><!-- /block-news-sidebar -->

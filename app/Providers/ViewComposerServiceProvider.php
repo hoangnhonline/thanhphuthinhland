@@ -12,6 +12,7 @@ use App\Models\CustomLink;
 use App\Models\LandingProjects;
 use App\Models\ProContent;
 use App\Models\Price;
+use App\Models\Support;
 use App\Models\Area;
 use App\Models\Direction;
 
@@ -69,10 +70,10 @@ class ViewComposerServiceProvider extends ServiceProvider
         	$areaList = Area::all();
         	$directionList = Direction::all();
         	$footerLink = CustomLink::where('block_id', 2)->orderBy('display_order', 'asc')->get();
-
+        	$supportList = Support::orderBy('display_order', 'asc')->get();
 			$view->with( ['loaiSpKey' => [], 'menuNgang' => [], 'menuDoc' => [], 'loaiSpHot' => [], 'settingArr' => $settingArr, 
 			'banList' => $banList, 'thueList' => $thueList, 'articleCate' => $articleCate, 'districtList' => $districtList, 'tinRandom' => $tinRandom, 'customLink' => $customLink, 'landingList' => $landingList, 'landing2List' => $landing2List, 'priceList' => $priceList, 'areaList' => $areaList,
-			'directionList' => $directionList, 'footerLink' => $footerLink] );
+			'directionList' => $directionList, 'footerLink' => $footerLink, 'supportList' => $supportList] );
 			
 		});
 	}
