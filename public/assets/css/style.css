@@ -544,9 +544,9 @@ img {
 .block-news-default .block-news-list-right {
     border: 1px solid #dedede;
     background: #fff;
-    padding: 18px 13px 10px !important;
-    min-height: 313px;
-    height: 313px;
+    padding: 23px 13px 10px !important;
+    min-height: 385px;
+    height: 385px;
     overflow: hidden;
 }
 .block-news-default-right .block-news-list-right li {
@@ -598,7 +598,7 @@ img {
     width: 100%;
 }
 .block-news-new li.news-new-item .news-new-item-description {
-    width: 72%;
+    width: 76%;
     float: right;
     text-align: left;
     position: relative;
@@ -1595,7 +1595,7 @@ img {
     width: 100%;
 }
 .block-article-list .article-list-news .article-news-item .article-news-item-description {
-    width: 66%;
+    width: 72%;
     float: right;
     text-align: left;
     position: relative;

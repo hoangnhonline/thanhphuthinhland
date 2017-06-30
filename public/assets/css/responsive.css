@@ -28,7 +28,7 @@
 */
 @media (min-width: 1200px) {
 	.container {
-	    width: 1000px;
+	    width: 1200px;
 	}
 	.nav-tabs-langding.fixed li {
 	    width: 90px !important;
