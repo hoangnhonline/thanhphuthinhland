@@ -544,9 +544,9 @@ img {
 .block-news-default .block-news-list-right {
     border: 1px solid #dedede;
     background: #fff;
-    padding: 23px 13px 10px !important;
-    min-height: 375px;
-    height: 375px;
+    padding: 17px 13px 10px !important;
+    min-height: 313px;
+    height: 313px;
     overflow: hidden;
 }
 .block-news-default-right .block-news-list-right li {

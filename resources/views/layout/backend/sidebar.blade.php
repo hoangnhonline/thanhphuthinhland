@@ -72,13 +72,7 @@
           @endif
         </ul>
       </li>
-      @if(Auth::user()->role > 1)
-      <li {{ in_array(\Request::route()->getName(), ['customer.edit', 'customer.index']) ? "class=active" : "" }}>
-        <a href="{{ route('customer.index') }}">
-          <i class="fa fa-pencil-square-o"></i> 
-          <span>Khách hàng</span>         
-        </a>       
-      </li>
+      @if(Auth::user()->role > 1)      
       <li {{ (in_array(\Request::route()->getName(), ['custom-link.edit', 'custom-link.index', 'custom-link.create']) && isset($block_id) && $block_id == 1 )? "class=active" : "" }}>
         <a href="{{ route('custom-link.index', ['block_id' => 1 ]) }}">
           <i class="fa fa-pencil-square-o"></i> 
