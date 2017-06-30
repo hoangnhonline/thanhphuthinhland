@@ -202,7 +202,7 @@ img {
 .header .header-logo .banner_adv {
     float: right;
 }
-.slogan {
+.slogan p {
     line-height: 31px;
     color: #fff;
 }
@@ -1703,7 +1703,8 @@ img {
     width: 122px !important;
     height: 92px !important;
 }
-.block-detail-info h3 {
+.block-detail-info h3,
+.block-utilities h3 {
     font: bold 14px/20px 'RobotoBold';
     color: #36a445;
     margin-bottom: 10px;
@@ -1719,6 +1720,9 @@ img {
     vertical-align: top;
     border-top: 1px solid #ddd;
     font: bold 12px 'RobotoBold';
+}
+.block-utilities i.fa-check {
+    color: #37A344;
 }
 
 /*===== Block All News New =====*/
