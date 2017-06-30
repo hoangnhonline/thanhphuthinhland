@@ -96,7 +96,7 @@
 
         var Top1 = header + nav;
         var Top2 = header + nav;
-        var position = ((width_screen - abc)/2) - 117;
+        var position = ((width_screen - abc)/2) - 105;
 
         var Top = $(".main").offset().top;
         var Top_end  = $(".main").offset().top + $(".main").height();

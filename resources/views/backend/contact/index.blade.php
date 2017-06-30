@@ -25,7 +25,16 @@
           <h3 class="panel-title">Bộ lọc</h3>
         </div>
         <div class="panel-body">
-          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}" id="frmContact">                                                
+          <form class="form-inline" role="form" method="GET" action="{{ route('contact.index') }}" id="frmContact">  <div class="form-group">
+              <label for="name">Dự án :</label>
+              <select class="form-control" name="project_id" id="project_id">
+                <option value="">--Tất cả--</option>
+                
+                @foreach($proList as $pro)
+                <option value="{{ $pro->id }}" {{ $project_id == $pro->id ? "selected" : "" }}>{{ $pro->name }}</option> 
+                @endforeach
+              </select>
+            </div>                                              
             <div class="form-group">
               <label for="name">Email :</label>
               <input type="text" class="form-control" name="email" value="{{ $email }}">
@@ -52,7 +61,8 @@
           </div>  
           <table class="table table-bordered" id="table-list-data">
             <tr>
-              <th style="width: 1%">#</th>                            
+              <th style="width: 1%">#</th>
+              <th style="width:15%">Dự án</th>
               <th>Thông tin liên hệ</th>
               <th>Nội dung</th>
               <th width="10%">Thời gian tạo</th>
@@ -65,6 +75,7 @@
                 <?php $i ++; ?>
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>                       
+                <td>{{ $item->project->name }}</td>
                 <td>                  
                   {{ $item->gender == 1 ? "Anh " : "Chị " }}
                   @if($item->full_name != '')
