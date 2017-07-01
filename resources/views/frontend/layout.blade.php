@@ -366,14 +366,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div>
 								<div class="block-contents">
 									<div class="block-video">
-										<iframe width="100%" height="315" src="https://www.youtube.com/embed/Kti6dY0mbU8" frameborder="0" allowfullscreen id="load_video"></iframe>
+										<iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ $videoFirst->youtube_id }}" frameborder="0" allowfullscreen id="load_video"></iframe>
 									</div>
 									<div class="block-video-relative">
-										<select name="">
-											<option value="Kti6dY0mbU8">Bí quyết chốt sale	</option>
-											<option value="N4YjthBx0tc">5 bước xử lý từ chối khách hàng</option>
-											<option value="5nUJeguO1pA">5 bí mật phong thủy thầy tướng số không bao giờ tiết lộ cho bạn Huyền bí TV Huyền bí TV</option>
-											<option value="6ZgLWYwr6g4">Xử lý từ chối</option>											
+										<select name="" id="selectVideo">
+											@foreach($videoList as $video)
+											<option value="{{ $video->youtube_id }}">{!! $video->name !!}	</option>
+											@endforeach				
 										</select>
 									</div>
 								</div>
@@ -434,6 +433,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		        headers: {
 		          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		        }
+		    });
+		    $('#selectVideo').change(function(){
+		    	$('#load_video').attr('src', 'https://www.youtube.com/embed/' + $(this).val());
+		    	window.frames['load_video'].location.reload();
 		    });
 		    @if(isset($district_id) && $district_id > 0)
 		    var district_id = {{ $district_id }};

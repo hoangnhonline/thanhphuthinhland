@@ -6,12 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\EstateType;
-
 use App\Models\Product;
-
-
 use App\Models\Banner;
-
 use App\Models\Location;
 use App\Models\City;
 use App\Models\District;
@@ -23,6 +19,7 @@ use App\Models\ArticlesCate;
 use App\Models\Customer;
 use App\Models\Newsletter;
 use App\Models\PriceRange;
+use App\Models\Video;
 use App\Models\Price;
 use App\Models\Area;
 use App\Models\Settings;
@@ -118,11 +115,9 @@ class HomeController extends Controller
         $tuvan = Articles::where('cate_id', 6)->orderBy('id', 'desc')->limit(6)->get()->toArray();
 
         $phantich = Articles::where('cate_id', 1)->orderBy('id', 'desc')->limit(6)->get()->toArray();
-
-        
-        
-
-        return view('frontend.home.index', compact('bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess', 'hotProduct', 'tinThiTruong', 'luat', 'khonggiansong', 'phongthuy', 'tinRandom','hotProduct2', 'luat', 'tuvan'));
+        $videoList = Video::where('status', 1)->orderBy('display_order')->get();
+        $videoFirst = $videoList->first();     
+        return view('frontend.home.index', compact('bannerArr', 'articlesArr', 'socialImage', 'seo', 'countMess', 'hotProduct', 'tinThiTruong', 'luat', 'khonggiansong', 'phongthuy', 'tinRandom','hotProduct2', 'luat', 'tuvan', 'videoList', 'videoFirst'));
 
     }
 

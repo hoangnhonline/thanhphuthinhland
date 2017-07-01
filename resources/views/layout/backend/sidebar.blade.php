@@ -143,7 +143,7 @@
       </li>      
       @endif
       @if(Auth::user()->role > 1)
-      <li class="treeview {{ in_array(\Request::route()->getName(), ['account.index', 'info-seo.index', 'settings.index', 'settings.noti', 'menu.index']) || (in_array(\Request::route()->getName(), ['custom-link.edit', 'custom-link.index', 'custom-link.create']) && isset($block_id) && $block_id == 2 ) ? 'active' : '' }}">
+      <li class="treeview {{ in_array(\Request::route()->getName(), ['account.index', 'info-seo.index', 'settings.index', 'settings.noti', 'menu.index', 'video.index', 'video.edit', 'video.create']) || (in_array(\Request::route()->getName(), ['custom-link.edit', 'custom-link.index', 'custom-link.create']) && isset($block_id) && $block_id == 2 ) ? 'active' : '' }}">
         <a href="#">
           <i class="fa  fa-gears"></i>
           <span>Cài đặt</span>
@@ -161,7 +161,8 @@
               <span>Link Footer</span>         
             </a>       
           </li>
-          <li {{ in_array(\Request::route()->getName(), ['support.list', 'support.edit', 'support.create']) ? "class=active" : "" }}><a href="{{ route('support.index') }}"><i class="fa fa-circle-o"></i> Hỗ trợ khách hàng</a></li>        
+          <li {{ in_array(\Request::route()->getName(), ['support.list', 'support.edit', 'support.create']) ? "class=active" : "" }}><a href="{{ route('support.index') }}"><i class="fa fa-circle-o"></i> Hỗ trợ khách hàng</a></li>  
+          <li {{ in_array(\Request::route()->getName(), ['video.index', 'video.edit', 'video.create']) ? "class=active" : "" }}><a href="{{ route('video.index') }}"><i class="fa fa-circle-o"></i> Video</a></li>      
           <li {{ \Request::route()->getName() == "menu.index" ? "class=active" : "" }}><a href="{{ route('menu.index') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
           <li {{ \Request::route()->getName() == "info-seo.index" ? "class=active" : "" }}><a href="{{ route('info-seo.index') }}"><i class="fa fa-circle-o"></i> Cài đặt SEO</a></li>
           @endif
