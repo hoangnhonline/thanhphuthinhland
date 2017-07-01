@@ -352,7 +352,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 										<div role="tabpanel" class="tab-pane active" id="map">
 											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.355643178182!2d106.62051131422558!3d10.707027992368664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752df8b1cc6c91%3A0x8e98312157254909!2zQ3R5IFROSEggRFYgVMawIFbhuqVuIELEkFMgVGhhbmggUGjDuiBUaOG7i25oIExhbmQ!5e0!3m2!1svi!2s!4v1498887826492" width="100%" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
-										<div role="tabpanel" class="tab-pane" id="fanpage">
+										<div role="tabpanel" class="tab-pane" id="fanpage" style="text-align:center !important;">
 											<div class="fb-page" data-href="https://www.facebook.com/thanhphuthinhland.com.vn/" data-tabs="timeline" data-width="478" data-height="345" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/thanhphuthinhland.com.vn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thanhphuthinhland.com.vn/">Nhà Đất Long An</a></blockquote></div>
 										</div>
 									</div>

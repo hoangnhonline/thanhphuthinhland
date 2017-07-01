@@ -21,8 +21,15 @@
             </ul>
         </li><!-- END MENU BLOG -->
         <li class="level0 {{ in_array(\Request::route()->getName(), ['du-an', 'detail-project', 'tab']) ? "active" : "" }}"><a href="{{ route('du-an') }}">Dự án</a></li>
-        @foreach($articleCate as $value)
-        <li class="level0 {{ (isset($cateDetail) && $cateDetail->id == $value->id) ? "active" : "" }}"><a href="{{ route('news-list', $value->slug) }}">{!! $value->name !!}</a></li>
+        @foreach($menuList as $value)
+            @if($value->type == 1)
+                <li class="level0 {{ (isset($cateDetail) && $cateDetail->id == $value->object_id) ? "active" : "" }}"><a href="{{ route('news-list', $value->slug) }}">{!! $value->title !!}</a></li>
+            @elseif($value->type == 2)
+                <li class="level0 {{ (isset($detailPage) && $detailPage->id == $value->object_id) ? "active" : "" }}"><a href="{{ route('danh-muc', $value->slug) }}">{!! $value->title !!}</a></li>
+            @elseif($value->type == 3)
+                <li class="level0"><a href="{{ $value->url }}">{!! $value->title !!}</a></li>
+            @endif
+
         @endforeach
         
         <li class="level0 postnew {{ (in_array(\Request::route()->getName(), ['ky-gui-thanh-cong', 'ky-gui'])) ? "active" : "" }}"><a href="{{ route('ky-gui') }}"><img src="{{ URL::asset('assets/images/icon-postnews.png') }}" alt="Ký gửi"> Ký gửi</a></li>

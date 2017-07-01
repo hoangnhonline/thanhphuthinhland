@@ -19,7 +19,14 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::get('/', ['as' => 'report.index', 'uses' => 'ReportController@index']);     
         Route::post('/search-price-other-site', ['as' => 'crawler.search-price-other-site', 'uses' => 'CompareController@search']);
     });
-
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('/', ['as' => 'menu.index', 'uses' => 'GeneralController@setupMenu']);
+        Route::get('/create', ['as' => 'menu.create', 'uses' => 'GeneralController@create']);
+        Route::post('/store', ['as' => 'menu.store', 'uses' => 'GeneralController@storeMenu']);
+        Route::get('{id}/edit',   ['as' => 'menu.edit', 'uses' => 'GeneralController@edit']);
+        Route::post('/render-menu', ['as' => 'render-menu', 'uses' => 'GeneralController@renderMenu']);
+        Route::get('{id}/destroy', ['as' => 'menu.destroy', 'uses' => 'GeneralController@destroy']);
+    });
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/', ['as' => 'cart.index', 'uses' => 'CartController@index']);
         Route::get('/create', ['as' => 'cart.create', 'uses' => 'CartController@create']);
