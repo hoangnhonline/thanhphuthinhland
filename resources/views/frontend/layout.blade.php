@@ -350,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<div class="block-contents">
 									<div class="tab-content">
 										<div role="tabpanel" class="tab-pane active" id="map">
-											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6903083589414!2d106.61361275093289!3d10.834995092243878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bcd73fab2b1%3A0x8534ff178dd35ce0!2zMjAgVMOibiBUaOG7m2kgTmjhuqV0IDIsIFTDom4gVGjhu5tpIE5o4bqldCwgUXXhuq1uIDEyLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1498635513213" width="478" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
+											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6903083589414!2d106.61361275093289!3d10.834995092243878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752bcd73fab2b1%3A0x8534ff178dd35ce0!2zMjAgVMOibiBUaOG7m2kgTmjhuqV0IDIsIFTDom4gVGjhu5tpIE5o4bqldCwgUXXhuq1uIDEyLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1498635513213" width="100%" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
 										<div role="tabpanel" class="tab-pane" id="fanpage">
 											<div class="fb-page" data-href="https://www.facebook.com/thanhphuthinhland.com.vn/" data-tabs="timeline" data-width="478" data-height="345" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/thanhphuthinhland.com.vn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thanhphuthinhland.com.vn/">Nhà Đất Long An</a></blockquote></div>
@@ -665,6 +665,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			});
 		});
 	</script>
+<style>
+.fb-page, 
+.fb-page span, 
+.fb-page span iframe[style] { 
+    width: 100% !important; 
+}
+#fb-root {
+    display: none;
+}
 
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+    overflow-x: hidden;
+}
+
+div.fb-like-box,
+div.fb-like-box > span,
+div.fb-like-box > span > iframe[style],
+div.fb-comments,
+div.fb-comments > span,
+div.fb-comments > span > iframe[style] {
+  width: 100% !important;
+  overflow-x: hidden;
+}#fb-root {
+    display: none;
+}
+
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+    overflow-x: hidden;
+}
+
+div.fb-like-box,
+div.fb-like-box > span,
+div.fb-like-box > span > iframe[style],
+div.fb-comments,
+div.fb-comments > span,
+div.fb-comments > span > iframe[style] {
+  width: 100% !important;
+  overflow-x: hidden;
+}
+</style>
 </body>
 </html>
