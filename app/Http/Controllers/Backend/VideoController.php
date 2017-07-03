@@ -108,7 +108,7 @@ class VideoController extends Controller
 
         Session::flash('message', 'Cập nhật video thành công');
 
-        return redirect()->route('video.edit', $dataArr['id']);
+        return redirect()->route('video.index');
     }
 
     /**
