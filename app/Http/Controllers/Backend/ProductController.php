@@ -316,7 +316,7 @@ class ProductController extends Controller
         $this->processRelation($dataArr, $product_id);
         Session::flash('message', 'Tạo mới tin thành công');
 
-        return redirect()->route('product.index', ['estate_type_id' => $dataArr['estate_type_id'], 'type' => $dataArr['type']]);
+        return redirect()->route('product.index', ['estate_type_id' => $dataArr['estate_type_id'], 'type' => $dataArr['type'], 'city_id' => $dataArr['city_id']]);
     }
     private function processRelation($dataArr, $object_id, $type = 'add'){
     
