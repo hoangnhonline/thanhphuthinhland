@@ -70,6 +70,9 @@
             <div class="form-group">              
               <select class="form-control" name="district_id" id="district_id">
                 <option value="">--Quận--</option>
+                <?php 
+                  $districtList = App\Models\District::where('city_id', $arrSearch['city_id'])->get();
+                  ?>
                   @foreach( $districtList as $value )
                     <option value="{{ $value->id }}"
                     {{ $arrSearch['district_id'] == $value->id ? "selected" : "" }}                        
