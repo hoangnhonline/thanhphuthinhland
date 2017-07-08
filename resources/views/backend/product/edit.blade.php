@@ -75,21 +75,44 @@
                             @endforeach
                           </select>
                         </div>
-                        <div class="form-group col-md-6  pleft-5">
-                          <label for="email">Quận <span class="red-star">*</span></label>
-                            <select class="form-control" name="district_id" id="district_id">
-                                @foreach( $districtList as $value )
+                        <div class="form-group col-md-4  pleft-5">
+                          <label for="email">Tỉnh/TP <span class="red-star">*</span></label>
+                            <select class="form-control" name="city_id" id="city_id">
+                                @foreach( $cityList as $value )
                                 <option value="{{ $value->id }}"
-                                {{ old('district_id', $detail->district_id) == $value->id ? "selected" : "" }}                           
+                                {{ old('city_id', $detail->city_id) == $value->id ? "selected" : "" }}                           
 
                                 >{{ $value->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-6 none-padding">
+                        <?php 
+                        $district_id = old('district_id', $detail->district_id);
+                        $city_id = old('city_id', $detail->city_id);
+                        ?>
+                        <div class="form-group col-md-4  pleft-5">
+                          <label for="email">Quận <span class="red-star">*</span></label>
+                            <select class="form-control" name="district_id" id="district_id">
+                              <option value="">--Chọn--</option>
+                              <?php 
+                              $districtList = App\Models\District::where('city_id', $city_id)->get();
+                            
+                            ?>
+                                @foreach( $districtList as $value )
+                                <option value="{{ $value->id }}"
+                                {{ $district_id == $value->id ? "selected" : "" }}                           
+
+                                >{{ $value->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 none-padding">
                           <label for="email">Phường <span class="red-star">*</span></label>
                           <select class="form-control" name="ward_id" id="ward_id">
                             <option value="">--Chọn--</option>
+                            <?php 
+                            $wardList = App\Models\Ward::where('district_id', $district_id)->get();
+                            ?>
                             @foreach( $wardList as $value )
                             <option value="{{ $value->id }}"
                             {{ old('ward_id', $detail->ward_id) == $value->id ? "selected" : "" }}                           
@@ -99,8 +122,12 @@
                           </select>
                         </div>
                         <div class="form-group col-md-6  pleft-5">
-                          <label for="email">Đường <span class="red-star">*</span></label>
+                          <label for="email">Đường </label>
                             <select class="form-control" name="street_id" id="street_id">
+                                <option value="">--Chọn--</option>
+                                <?php 
+                                $streetList = App\Models\Street::where('district_id', $district_id)->get();
+                                ?>
                                 @foreach( $streetList as $value )
                                 <option value="{{ $value->id }}"
                                 {{ old('street_id', $detail->street_id) == $value->id ? "selected" : "" }}                           
@@ -760,7 +787,8 @@ $(document).on('keypress', '#name_search', function(e){
             data : {
               mod : 'ward',
               col : 'district_id',
-              id : district_id
+              id : district_id,
+              'csrf-token' : '{{ csrf_token() }}'
             },
             type : 'POST',
             dataType : 'html',
@@ -774,7 +802,8 @@ $(document).on('keypress', '#name_search', function(e){
             data : {
               mod : 'street',
               col : 'district_id',
-              id : district_id
+              id : district_id,
+              'csrf-token' : '{{ csrf_token() }}'
             },
             type : 'POST',
             dataType : 'html',
@@ -788,7 +817,8 @@ $(document).on('keypress', '#name_search', function(e){
             data : {
               mod : 'project',
               col : 'district_id',
-              id : district_id
+              id : district_id,
+              'csrf-token' : '{{ csrf_token() }}'
             },
             type : 'POST',
             dataType : 'html',
@@ -889,7 +919,24 @@ $(document).on('keypress', '#name_search', function(e){
             });
          }
       }); 
-      
+      $('#city_id').change(function(){         
+
+          $.ajax({
+            url : '{{ route('get-child') }}',
+            data : {
+              mod : 'district',
+              col : 'city_id',
+              id : $('#city_id').val()
+            },
+            type : 'POST',
+            dataType : 'html',
+            success : function(data){
+              $('#district_id').html(data);
+              $('#ward_id, #project_id, #street_id').html('');
+            }
+          })
+        
+      });
     });
     
 </script>

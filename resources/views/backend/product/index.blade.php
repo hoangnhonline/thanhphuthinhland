@@ -20,7 +20,7 @@
       @if(Session::has('message'))
       <p class="alert alert-info" >{{ Session::get('message') }}</p>
       @endif
-      <a href="{{ route('product.create', ['estate_type_id' => $arrSearch['estate_type_id'], 'type' => $arrSearch['type']]) }}" class="btn btn-info btn-sm" style="margin-bottom:5px">Tạo mới</a>
+      <a href="{{ route('product.create', ['estate_type_id' => $arrSearch['estate_type_id'], 'type' => $arrSearch['type'], 'city_id' => $arrSearch['city_id']]) }}" class="btn btn-info btn-sm" style="margin-bottom:5px">Tạo mới</a>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Bộ lọc</h3>
@@ -74,6 +74,17 @@
 
                   >{{ $value->name }}</option>
                   @endforeach
+              </select>
+            </div>
+            <div class="form-group">              
+              <select class="form-control" name="city_id" id="city_id">
+                <option value="">--Tỉnh/TP--</option>
+                  @foreach( $cityList as $value )
+                    <option value="{{ $value->id }}"
+                    {{ $arrSearch['city_id'] == $value->id ? "selected" : "" }}                        
+
+                    >{{ $value->name }}</option>
+                    @endforeach
               </select>
             </div>
             <div class="form-group">              
@@ -265,7 +276,7 @@ $(document).ready(function(){
     obj.parent().parent().parent().submit(); 
   });
   
-  $('#estate_type_id, #type, #district_id, #ward_id, #cart_status').change(function(){    
+  $('#estate_type_id, #city_id, #type, #district_id, #ward_id, #cart_status').change(function(){    
     $('#searchForm').submit();
   });  
   $('#is_hot').change(function(){

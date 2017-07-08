@@ -57,6 +57,17 @@
               </select>
             </div>
             <div class="form-group">              
+              <select class="form-control" name="city_id" id="city_id">
+                <option value="">--Tỉnh/TP--</option>
+                  @foreach( $cityList as $value )
+                    <option value="{{ $value->id }}"
+                    {{ $arrSearch['city_id'] == $value->id ? "selected" : "" }}                        
+
+                    >{{ $value->name }}</option>
+                    @endforeach
+              </select>
+            </div>
+            <div class="form-group">              
               <select class="form-control" name="district_id" id="district_id">
                 <option value="">--Quận--</option>
                   @foreach( $districtList as $value )
@@ -216,7 +227,7 @@ $(document).ready(function(){
     obj.parent().parent().parent().submit(); 
   });
   
-  $('#estate_type_id, #type, #district_id, #ward_id, #cart_status').change(function(){    
+  $('#estate_type_id, #city_id, #type, #district_id, #ward_id, #cart_status').change(function(){    
     $('#searchForm').submit();
   });  
   $('#table-list-data tbody').sortable({
