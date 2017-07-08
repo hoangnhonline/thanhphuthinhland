@@ -175,8 +175,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 												</select>
 											</div>											
 											<div class="form-group">
+												<select class="selectpicker form-control" data-live-search="true" id="city_id" name="city_id">
+													<option value="">Tỉnh/TP</option>
+													@foreach($cityList as $city)
+													<option @if(isset($city_id) && $city_id == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
+													@endforeach
+												</select>
+											</div>
+											<div class="form-group">
 												<select class="selectpicker form-control" data-live-search="true" id="district_id" name="district_id">
 													<option value="">Quận/Huyện</option>
+													<?php 
+													if(isset($city_id)){
+													$districtList = App\Models\District::where('city_id', $city_id)->get();
+													}
+													?>
 													@foreach($districtList as $district)
 													<option @if(isset($district_id) && $district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
 													@endforeach
@@ -625,6 +638,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			@endif
 		});
 		$(document).ready(function(){
+			$('#city_id').change(function(){
+				obj = $(this);
+				
+				$.ajax({
+					url : '{{ route('get-child') }}',
+					data : {
+						mod : 'district',
+						col : 'city_id',
+						id : obj.val()
+					},
+					type : 'POST',
+					dataType : 'html',
+					success : function(data){
+						$('#district_id').html(data).selectpicker('refresh');
+					}
+				});
+			});
 			$('#btnSearch').click(function(){		
 				if($('#estate_type_id').val() == ''){
 					swal({ title: '', text: 'Vui lòng chọn loại bất động sản.', type: 'error' });

@@ -82,6 +82,7 @@ class DetailController extends Controller
         $street_id = $detail->street_id;
         $ward_id = $detail->ward_id;
         $district_id = $detail->district_id;
+        $city_id = $detail->city_id;
         $area_id = $detail->area_id;
         $price_id = $detail->price_id;
         $no_room = $detail->no_room;
@@ -92,6 +93,7 @@ class DetailController extends Controller
             'type',
             'estate_type_id',
             'street_id',
+            'city_id',
             'ward_id',
             'district_id',
             'no_room',

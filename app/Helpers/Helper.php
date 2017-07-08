@@ -24,6 +24,8 @@ class Helper
              echo '<option value="">Loại bất động sản</option>';
         }elseif($table == 'price'){
             echo '<option value="">Mức giá</option>';
+        }elseif($table == 'district'){
+            echo '<option value="">Quận/Huyện</option>';
         }else{            
             echo '<option value="">Dự án</option>';
         }

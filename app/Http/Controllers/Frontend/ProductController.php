@@ -108,6 +108,7 @@ class ProductController extends Controller
             $estate_type_id = $request->estate_type_id;
             $type = $request->type;
             $district_id = $request->district_id;
+            $city_id = $request->city_id;
             $ward_id = $request->ward_id;
             $project_id = $request->project_id;
             $price_id = $request->price_id;
@@ -117,6 +118,9 @@ class ProductController extends Controller
             $direction_id = $request->direction_id;
 
             $query = Product::where('estate_type_id', $estate_type_id);
+            if($city_id){
+                $query->where('city_id', $city_id);
+            }
             if($district_id){
                 $query->where('district_id', $district_id);
             }
@@ -156,6 +160,7 @@ class ProductController extends Controller
             'estate_type_id',
             'street_id',
             'ward_id',
+            'city_id',
             'district_id',
             'no_room',
             'direction_id',

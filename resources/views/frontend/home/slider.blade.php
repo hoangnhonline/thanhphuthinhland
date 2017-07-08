@@ -40,13 +40,26 @@ if(!isset($project_id)){
 											</select>
 										</div>											
 										<div class="form-group">
-											<select class="selectpicker form-control" data-live-search="true" id="district_id" name="district_id">
-												<option value="">Quận/Huyện</option>
-												@foreach($districtList as $district)
-												<option @if(isset($district_id) && $district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
-												@endforeach
-											</select>
-										</div>
+												<select class="selectpicker form-control" data-live-search="true" id="city_id" name="city_id">
+													<option value="">Tỉnh/TP</option>
+													@foreach($cityList as $city)
+													<option @if(isset($city_id) && $city_id == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
+													@endforeach
+												</select>
+											</div>
+											<div class="form-group">
+												<select class="selectpicker form-control" data-live-search="true" id="district_id" name="district_id">
+													<option value="">Quận/Huyện</option>
+													<?php 
+													if(isset($city_id)){
+													$districtList = App\Models\District::where('city_id', $city_id)->get();
+													}
+													?>
+													@foreach($districtList as $district)
+													<option @if(isset($district_id) && $district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
+													@endforeach
+												</select>
+											</div>
 										<div class="form-group">
 											<select class="selectpicker form-control" id="ward_id" name="ward_id" data-live-search="true">
 												<option value="">Phường/Xã</option>
@@ -56,12 +69,7 @@ if(!isset($project_id)){
 											<select class="selectpicker form-control" id="street_id" name="street_id" data-live-search="true">
 												<option value="">Đường/Phố</option>
 											</select>
-										</div>
-										<div class="form-group">
-											<select class="selectpicker form-control" data-live-search="true" id="project_id" name="project_id">
-												<option value="">Dự án</option>
-											</select>
-										</div>
+										</div>										
 										<div class="form-group">
 											<select class="selectpicker form-control" data-live-search="true" name="price_id" id="price_id">
 												<option value="">Mức giá</option>
