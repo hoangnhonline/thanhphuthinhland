@@ -196,7 +196,7 @@ class DetailController extends Controller
         $streetList = Street::where('district_id', $district_id)->get();
         $projectList = Project::where('district_id', $district_id)->get();
 
-        $tienIchLists = Tag::where(['type' => 3, 'district_id' => $district_id])->get();
+        $tienIchLists = Tag::where(['type' => 3])->get();
         $seo['title'] = $seo['description'] = $seo['keywords'] = "Đăng tin ký gửi";
         return view('frontend.ky-gui.index', compact('estateTypeArr',   'estate_type_id', 'type', 'district_id', 'districtList', 'wardList', 'streetList', 'projectList', 'priceUnitList', 'tagArr', 'tienIchLists', 'directionArr', 'seo'));
     }
