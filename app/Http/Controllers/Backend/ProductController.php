@@ -246,7 +246,7 @@ class ProductController extends Controller
         $streetList = Street::where('district_id', $district_id)->get();
         $projectList = Project::where('district_id', $district_id)->get();
 
-        $tienIchLists = Tag::where(['type' => 3, 'district_id' => $district_id])->get();
+        $tienIchLists = Tag::where(['type' => 3])->get();
         $areaList = Area::all();
 
         return view('backend.product.create', compact('estateTypeArr',   'estate_type_id', 'type', 'district_id', 'districtList', 'wardList', 'streetList', 'projectList', 'priceUnitList', 'tagArr', 'tienIchLists', 'directionArr', 'priceList', 'areaList', 'city_id'));

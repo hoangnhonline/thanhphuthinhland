@@ -773,18 +773,6 @@ $(document).on('click', '#btnSaveTagAjax', function(){
       });
       
       $('#district_id').change(function(){
-         
-            $.ajax({
-              url: $('#route_get_tien_ich').val(),
-              type: "GET",
-              async: false,      
-              data: {
-                district_id : $(this).val()
-              },              
-              success: function (response) {
-                $('#load-tien-ich').html(response)             
-              }
-            });
 
             var district_id = $(this).val();
           $.ajax({
