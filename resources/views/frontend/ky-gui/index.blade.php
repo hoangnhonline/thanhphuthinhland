@@ -87,8 +87,24 @@
 									</div><!-- /form-group -->
 									<div class="form-group mb0-w600">
 										<label class="col-sm-3 control-label">Vị trí <span>(*)</span>:</label>
-										<div class="col-sm-4 mb-600">
+										<div class="col-sm-3 mb-600">				                          
+				                            <select class="selectpicker form-control" name="city_id" id="city_id">
+				                            	<option value="">Tỉnh/TP</option>
+				                                @foreach( $cityList as $value )
+				                                <option value="{{ $value->id }}"
+				                                {{ old('city_id') == $value->id ? "selected" : "" }}                           
+
+				                                >{{ $value->name }}</option>
+				                                @endforeach
+				                            </select>
+				                        </div>
+										<div class="col-sm-3 mb-600">
 									  		<select class="selectpicker form-control" id="district_id" name="district_id">
+									  		 <?php 
+				                            if(old('city_id')){
+				                              $districtList = App\Models\District::where('city_id', $city_id)->get();
+				                            }
+				                            ?>
 									  			<option value="">Quận/Huyện</option>
 												@foreach( $districtList as $value )
 				                                <option value="{{ $value->id }}"
@@ -98,7 +114,7 @@
 				                                @endforeach
 											</select>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 									  		<select class="selectpicker form-control" id="ward_id" name="ward_id">
 												<option class="option-lv0" selected="selected" value="">Phường/Xã</option>
 												@foreach( $wardList as $value )
@@ -208,6 +224,24 @@
 											<span>Số toilet:</span>
 											<input type="text" name="no_wc" class="form-control inline-block form-control2">
 										</div>
+										<div class="col-sm-12 block-col-width-right" style="margin-top:10px;margin-bottom:10px">
+										<span>Tiện ích:</span>
+											<div class="form-group col-sm-12" style="margin-top:10px;" id="load-tien-ich"> 
+				                              @if($tienIchLists)
+				                                <?php $i_ti = 0; ?>
+				                                @foreach($tienIchLists as $ti)
+				                                <?php $i_ti++; ?>
+				                                <div class="col-sm-3">
+				                                  <input type="checkbox" value="{{ $ti->id }}" name="tien_ich[]" id="tien_ich_{{ $i_ti }}"> 
+				                                  <label style="cursor:poiter;font-weight:normal" for="tien_ich_{{ $i_ti }}">{{ $ti->name }}</label>
+				                                </div>
+				                                @endforeach 
+				                              @else
+				                              <p>Chưa có tiện ích nào.</p>
+				                              @endif
+				                              <div class="clearfix"></div>
+			                              </div>
+			                        </div>
 									</div><!-- /form-group -->
 
 									<hr>

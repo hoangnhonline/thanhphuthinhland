@@ -207,8 +207,7 @@ class DetailController extends Controller
             'type' => 'required',
             'estate_type_id' => 'required',
             'district_id' => 'required',
-            'ward_id' => 'required',
-            'street_id' => 'required',
+            'ward_id' => 'required',            
             'full_address' => 'required',
             'title' => 'required',            
             'price' => 'required|numeric',
@@ -243,7 +242,15 @@ class DetailController extends Controller
         $dataArr['price_id'] = Helper::getPriceId($dataArr['price'], $dataArr['price_unit_id'], $dataArr['type']);
         $dataArr['area_id'] = Helper::getAreaId($dataArr['area']);   
         $rs = Product::create($dataArr);
-        $product_id = $rs->id;         
+        $product_id = $rs->id; 
+
+        // xu ly tien ich
+        if( !empty( $dataArr['tien_ich'] ) && $product_id ){
+            foreach ($dataArr['tien_ich'] as $tag_id) {
+                TagObjects::create(['object_id' => $product_id, 'tag_id' => $tag_id, 'type' => 3]);
+            }
+        }
+
         $this->storeImage( $product_id, $dataArr);       
         
         Session::flash('message', 'Đăng tin ký gửi thành công');
