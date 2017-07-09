@@ -43,8 +43,8 @@ class NewsController extends Controller
 
             $title = trim($detail->meta_title) ? $detail->meta_title : $detail->title;
 
-            $hotArr = Articles::where( ['cate_id' => 1, 'is_hot' => 1] )->where('id', '<>', $id)->orderBy('id', 'desc')->limit(5)->get();
-            $otherArr = Articles::where( ['cate_id' => 1] )->where('id', '<>', $id)->orderBy('id', 'desc')->limit(4)->get();
+            $hotArr = Articles::where( ['cate_id' => $detail->cate_id, 'is_hot' => 1] )->where('id', '<>', $id)->orderBy('id', 'desc')->limit(5)->get();
+            $otherArr = Articles::where( ['cate_id' => $detail->cate_id] )->where('id', '<>', $id)->orderBy('id', 'desc')->limit(4)->get();
             $seo['title'] = $detail->meta_title ? $detail->meta_title : $detail->title;
             $seo['description'] = $detail->meta_description ? $detail->meta_description : $detail->title;
             $seo['keywords'] = $detail->meta_keywords ? $detail->meta_keywords : $detail->title;
