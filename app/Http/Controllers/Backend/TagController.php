@@ -186,7 +186,7 @@ class TagController extends Controller
 
         $model->update($dataArr);
 
-        if( $dataArr['meta_id'] ){
+        if( $dataArr['meta_id'] != '' ){
 
             $this->storeMeta( $dataArr['id'], $dataArr['meta_id'], $dataArr);
         }
