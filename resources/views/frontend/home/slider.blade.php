@@ -99,7 +99,7 @@ if(!isset($project_id)){
 		</div><!-- /col-sm-4 col-xs-12 -->
 		<div class="col-sm-9 col-xs-12">
 			<div class="block-slider-home">
-				<div class="owl-carousel dotsData owl-style2" data-nav="true" data-margin="0" data-items='1' data-autoplayTimeout="700" data-autoplay="false" data-loop="true">
+				<div class="owl-carousel dotsData owl-style2" data-nav="true" data-margin="0" data-items='1' data-autoplayTimeout="500" data-autoplay="true" data-loop="true">
 					<?php $i = 0; ?>
 					@foreach($bannerArr as $banner)
 					 <?php $i++; ?>
