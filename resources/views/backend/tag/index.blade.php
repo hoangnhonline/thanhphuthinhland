@@ -20,7 +20,7 @@
       @if(Session::has('message'))
       <p class="alert alert-info" >{{ Session::get('message') }}</p>
       @endif
-      <a href="{{ route('tag.create') }}" class="btn btn-info btn-sm" style="margin-bottom:5px">Tạo mới</a>
+      <a href="{{ route('tag.create', ['type' => $type]) }}" class="btn btn-info btn-sm" style="margin-bottom:5px">Tạo mới</a>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Bộ lọc</h3>
@@ -32,7 +32,7 @@
               <select class="form-control" name="type" id="type">                                
                 <option value="1" {{ 1 == $type ? "selected" : "" }}>BĐS</option>
                 <option value="2" {{ 2 == $type ? "selected" : "" }}>Bài viết</option>
-                <option value="3" {{ 3 ==  $type ? "selected" : "" }}>Tiện ích xung quanh</option>              
+                <option value="3" {{ 3 ==  $type ? "selected" : "" }}>Tiện ích</option>              
               </select>
             </div>            
             <div class="form-group">

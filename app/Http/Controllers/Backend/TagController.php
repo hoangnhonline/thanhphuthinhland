@@ -56,9 +56,10 @@ class TagController extends Controller
     *
     * @return Response
     */
-    public function create()
+    public function create(Request $request)
     {
-        return view('backend.tag.create');
+        $type = $request->type ? $request->type : 1;
+        return view('backend.tag.create', compact('type'));
     }
 
     /**

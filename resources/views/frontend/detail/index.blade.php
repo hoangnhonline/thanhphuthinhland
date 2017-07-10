@@ -138,6 +138,29 @@
 	    		</table>
 	    	</div>
 	    </div><!-- /block-detail-info -->	    
+	    <div class="block-utilities">
+	    	<h3>Tiện ích</h3>
+	    	<div class="table-responsive">
+		    	<table class="table table-bordered">
+	    			<tr>
+	    				<?php $i = 0; ?>
+			    		@foreach($tienIchLists as $value)
+			    		<?php $i++; ?>
+		    			
+		    				<td>{!! $value->name !!} 
+		    				@if(in_array($value->id, $tienIch)) 
+		    					<i class="fa fa-check success"></i>
+		    				@endif
+		    				</td>		    				
+		    		
+		    			@if($i%3 == 0)
+		    			</tr><tr>
+		    			@endif					    			
+		    			@endforeach
+	    			</tr>	    			
+	    		</table>
+	    	</div>
+	    </div>
 	</article><!-- /block-cate-news-detail -->
 	@if(!empty((array)$tagSelected))
 	<?php $countTag = count($tagSelected);?>

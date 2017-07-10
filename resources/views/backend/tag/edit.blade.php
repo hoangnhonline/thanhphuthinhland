@@ -41,9 +41,9 @@
               <div class="form-group">
                 <label for="email">Loại </label>
                 <select class="form-control" name="type" id="type">                                
-                  <option value="1" {{ 1 ==  $detail->type ? "selected" : "" }}>BĐS</option>
-                  <option value="2" {{ 2 ==  $detail->type ? "selected" : "" }}>Bài viết</option>
-                  <option value="3" {{ 3 ==  $detail->type ? "selected" : "" }}>Tiện ích xung quanh</option>
+                  <option value="1" {{ 1 ==  old('type', $detail->type) ? "selected" : "" }}>BĐS</option>
+                  <option value="2" {{ 2 ==  old('type', $detail->type) ? "selected" : "" }}>Bài viết</option>
+                  <option value="3" {{ 3 ==  old('type', $detail->type) ? "selected" : "" }}>Tiện ích</option>
                 </select>
               </div>              
                <!-- text input -->

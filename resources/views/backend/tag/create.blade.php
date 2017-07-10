@@ -15,7 +15,7 @@
 
   <!-- Main content -->
   <section class="content">
-    <a class="btn btn-default btn-sm " href="{{ route('tag.index') }}" style="margin-bottom:5px">Quay lại</a>
+    <a class="btn btn-default btn-sm " href="{{ route('tag.index', ['type' => $type]) }}" style="margin-bottom:5px">Quay lại</a>
     <form role="form" method="POST" action="{{ route('tag.store') }}">
     <div class="row">
       <!-- left column -->
@@ -42,9 +42,9 @@
                 <div class="form-group">
                   <label for="email">Loại </label>
                   <select class="form-control" name="type" id="type">                                
-                    <option value="1" {{ 1 ==  old('type') ? "selected" : "" }}>BĐS</option>
-                    <option value="2" {{ 2 ==  old('type') ? "selected" : "" }}>Bài viết</option>
-                    <option value="3" {{ 3 ==  old('type') ? "selected" : "" }}>Tiện ích xung quanh</option>
+                    <option value="1" {{ 1 ==  old('type', $type) ? "selected" : "" }}>BĐS</option>
+                    <option value="2" {{ 2 ==  old('type', $type) ? "selected" : "" }}>Bài viết</option>
+                    <option value="3" {{ 3 ==  old('type', $type) ? "selected" : "" }}>Tiện ích</option>
                   </select>
                 </div>              
                  <!-- text input -->
@@ -65,7 +65,7 @@
             </div>                        
             <div class="box-footer">
               <button type="submit" class="btn btn-primary btn-sm">Lưu</button>
-              <a class="btn btn-default btn-sm" class="btn btn-primary btn-sm" href="{{ route('tag.index')}}">Hủy</a>
+              <a class="btn btn-default btn-sm" class="btn btn-primary btn-sm" href="{{ route('tag.index', ['type' => $type ]) }}">Hủy</a>
             </div>
             
         </div>
