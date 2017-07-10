@@ -134,7 +134,10 @@ class UserWorkController extends Controller
     public function edit($id)
     {
         $groupList = WorkGroup::all();
-        $detail = UserWork::find($id);      
+        $detail = UserWork::find($id);  
+        if(!$detail){
+            return redirect()->route('dashboard.index');
+        }    
         $user_id = $detail->created_user;
         $detailUser = Account::find($user_id);
         return view('backend.user-work.edit', compact('detail', 'detailUser', 'groupList'));
