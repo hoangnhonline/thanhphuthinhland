@@ -62,7 +62,9 @@ class Product extends Model  {
                             'price_id',
                             'area_id',
                             'is_hot',
-                            'display_order'
+                            'display_order',
+                            'created_user',
+                            'updated_user'
                         ];
 
     public static function productTag( $id )
