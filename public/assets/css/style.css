@@ -1540,6 +1540,11 @@ img {
     font-weight: bold;
     text-align: justify;
 }
+.block-news-new-detail li {
+    list-style: circle;
+    margin-left: 20px;
+    padding: 5px;
+}
 .block-news-new-detail p {
     padding: 5px 0;
     font: normal 14px/20px 'RobotoRegular';
