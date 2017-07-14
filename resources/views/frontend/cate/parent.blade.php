@@ -59,6 +59,9 @@
 								
 							</ul>
 							@endif
+							<div style="text-align:center">
+				            {{ $productList->links() }}
+				            </div>  
 							<!--<nav class="block-pagination">
 								<ul class="pagination">
 									<li><a class="selected" href="#">1</a></li>

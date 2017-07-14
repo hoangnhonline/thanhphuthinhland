@@ -36,7 +36,7 @@ class ProductController extends Controller
                 ->orderBy('product.is_hot', 'desc')
                 ->orderBy('product.cart_status', 'asc')
                 ->orderBy('product.id', 'desc');
-                $productList  = $query->limit(36)->get();
+                $productList  = $query->paginate(10);
                 $productArr = $productList->toArray();
             
             if( $rs->meta_id > 0){
@@ -70,7 +70,7 @@ class ProductController extends Controller
             ->orderBy('product.is_hot', 'desc')
             ->orderBy('product.cart_status', 'asc')
             ->orderBy('product.id', 'desc');
-            $productList  = $query->limit(36)->get();
+            $productList  = $query->paginate(10);
             $productArr = $productList->toArray();
             
             
@@ -92,7 +92,7 @@ class ProductController extends Controller
         ->orderBy('product.is_hot', 'desc')
         ->orderBy('product.cart_status', 'asc')
         ->orderBy('product.id', 'desc');
-        $productList  = $query->limit(36)->get();
+        $productList  = $query->paginate(10);
         $productArr = $productList->toArray();
         
         
@@ -149,7 +149,7 @@ class ProductController extends Controller
                 ->orderBy('product.is_hot', 'desc')
                 ->orderBy('product.cart_status', 'asc')
                 ->orderBy('product.id', 'desc');
-                $productList  = $query->limit(36)->get();
+                $productList  = $query->paginate(10);
                 $productArr = $productList->toArray();
             
             

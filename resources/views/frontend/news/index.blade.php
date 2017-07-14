@@ -9,13 +9,13 @@
 <article class="block-breadcrumb-page">
     <ul class="breadcrumb"> 
         <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>            
-        <li class="active">{{ $cateDetail->name }}</li>
+        <li class="active">{!! $cateDetail->name !!}</li>
     </ul>
 </article>
     <article class="block block-breadcrumb">
       <div class="block-contents">
         <ul>
-          <li class="active"><h2><a href="{{ route('news-list', $cateDetail->slug) }}">{{ $cateDetail->name }}</a></h2></li>
+          <li class="active"><h2><a href="{{ route('news-list', $cateDetail->slug) }}">{!! $cateDetail->name !!}</a></h2></li>
         </ul>
       </div>
     </article><!-- /block-breadcrumb -->    
@@ -39,16 +39,9 @@
               @endforeach
              
             </ul>
-            <!--<nav class="block-pagination">
-              <ul class="pagination">
-                <li><a class="selected" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#" aria-label="Previous">Trang sau</a></li>
-                <li><a href="#" aria-label="Next">Trang cuối</a></li>
-              </ul>-->
+            <div style="text-align:center">
+            {{ $articlesArr->links() }}
+            </div> 
             </nav>
           </div>
         </div>

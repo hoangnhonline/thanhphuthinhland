@@ -5,31 +5,23 @@
     <ul class="breadcrumb"> 
         <li><a href="{{ route('home') }}" title="Trở về trang chủ">Trang chủ</a></li>  
         <li>
-            <a href="{{ route('news-list', $cateDetail->slug) }}">{{ $cateDetail->name }}</a>
+            <a href="{{ route('news-list', $cateDetail->slug) }}">{!! $cateDetail->name !!}</a>
         </li>    
-        <li class="active">{{ $detail->title }}</li>
+        <li class="active">{!! $detail->title !!}</li>
     </ul>
 </article>
     <article class="block block-breadcrumb">
         <div class="block-contents">
             <ul>
-                <li class="active"><h2><a href="{{ route('news-list', $cateDetail->slug) }}">{{ $cateDetail->name }}</a></h2></li>
+                <li class="active"><h2><a href="{{ route('news-list', $cateDetail->slug) }}">{!! $cateDetail->name !!}</a></h2></li>
             </ul>
         </div>
     </article><!-- /block-breadcrumb -->
 
     <article class="block block-cate-news-detail block-news-new-detail">
-        <h1>{{ $detail->title }}</h1>
-        <div class="nd-time">{{ date('d-m-Y H:i', strtotime($detail->created_at)) }}</div>
-        <!--<div class="block-news-new-related">
-            <p>Cùng chủ đề : <b><a href="#" title="">Thị trường BDS 2017</a></b></p>
-            <ul>
-                <li><a href="#" title="">Cần có “hàng rào” pháp lý để sàng lọc dự án condotel</a></li>
-                <li><a href="#" title="">Nguy cơ “mất cả chì lẫn chài” vì ăn theo hạ tầng</a></li>
-                <li><a href="#" title="">Bất động sản giá rẻ trở thành "vùng trũng" hút dòng tiền đầu tư mạnh mẽ</a></li>
-            </ul>
-        </div><!-- /block-news-new-related -->
-        <h2>{{ $detail->description }}</h2>
+        <h1>{!! $detail->title !!}</h1>
+        <div class="nd-time">{!! date('d-m-Y H:i', strtotime($detail->created_at)) !!}</div>        
+        <h2>{!! $detail->description !!}</h2>
         <div class="block-news-new-content">
             <?php echo preg_replace('/(\<img[^>]+)(style\=\"[^\"]+\")([^>]+)(>)/', '${1}${3}${4}', $detail->content);  ?>
         </div><!-- /block-news-new-content -->
@@ -42,7 +34,7 @@
         <?php $i = 0; ?>
         @foreach($tagSelected as $tag)
         <?php $i++; ?>
-        <a href="{{ route('tag', $tag->slug) }}">{{ $tag->name }}</a>@if($i< $countTag), @endif
+        <a href="{{ route('tag', $tag->slug) }}">{!! $tag->name !!}</a>@if($i< $countTag), @endif
         @endforeach     
     </article>
     @endif

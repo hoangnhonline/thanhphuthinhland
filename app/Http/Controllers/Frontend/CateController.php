@@ -63,7 +63,7 @@ class CateController extends Controller
                 //->where('sp_hinh.image_url', '<>', '')
                 $query->orderBy('product.id', 'desc');
 
-                $productList  = $query->limit(36)->get();
+                $productList  = $query->paginate(2);
                 $productArr = $productList->toArray();
 
            
