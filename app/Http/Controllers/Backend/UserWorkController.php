@@ -59,6 +59,7 @@ class UserWorkController extends Controller
             }
         }
         $query->join('users', 'users.id', '=', 'user_work.created_user');
+        $query->select('user_work.*', 'users.full_name', 'users.role', 'users.email');
         $groupList = WorkGroup::all();
         $query->orderBy('user_work.status', 'asc')->orderBy('is_hot','desc')->orderBy('user_work.id', 'desc');
         $items = $query->orderBy('user_work.work_date', 'DESC')->paginate(20);

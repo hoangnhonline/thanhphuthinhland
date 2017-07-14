@@ -92,8 +92,9 @@
             </tr>
             <tbody>
             @if( $items->count() > 0 )
+
               <?php $i = 0; ?>
-              @foreach( $items as $item )
+              @foreach( $items as $item )           
                 <?php $i ++; ?>
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>       
@@ -112,7 +113,7 @@
                 <td>                  
                 {{ $item->status == 1 ? "Mới" : ( $item->status == 2  ? "Đã duyệt" : "Không duyệt")  }}
                 </td>
-                <td style="white-space:nowrap">                            
+                <td style="white-space:nowrap">                          
                   @if(Auth::user()->role == 1)
                     @if($item->status == 1)
                     <a href="{{ route( 'user-work.edit', [ 'id' => $item->id ]) }}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>                 
