@@ -109,3 +109,57 @@
 <!-- Modal -->
 
 @stop
+@section('javascript_page')
+<script type="text/javascript">
+$(document).ready(function(){
+
+      $('#btnUploadImage').click(function(){        
+        $('#file-image').click();
+      });      
+     
+      var files = "";
+      $('#file-image').change(function(e){
+         files = e.target.files;
+         
+         if(files != ''){
+           var dataForm = new FormData();        
+          $.each(files, function(key, value) {
+             dataForm.append('file', value);
+          });   
+          
+          dataForm.append('date_dir', 1);
+          dataForm.append('folder', 'tmp');
+
+          $.ajax({
+            url: $('#route_upload_tmp_image').val(),
+            type: "POST",
+            async: false,      
+            data: dataForm,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              if(response.image_path){
+                $('#thumbnail_image').attr('src',$('#upload_url').val() + response.image_path);
+                $( '#image_url' ).val( response.image_path );
+                $( '#image_name' ).val( response.image_name );
+              }
+              console.log(response.image_path);
+                //window.location.reload();
+            },
+            error: function(response){                             
+                var errors = response.responseJSON;
+                for (var key in errors) {
+                  
+                }
+                //$('#btnLoading').hide();
+                //$('#btnSave').show();
+            }
+          });
+        }
+      });
+      
+    
+    });
+    
+</script>
+@stop
