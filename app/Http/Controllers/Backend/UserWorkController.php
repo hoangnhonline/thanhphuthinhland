@@ -23,7 +23,7 @@ class UserWorkController extends Controller
     {
         $s['status'] = $status = isset($request->status) ? $request->status : null;
         $s['group_id'] = $group_id = isset($request->group_id) ? $request->group_id : null;
-        $s['created_user'] = $created_user = isset($request->created_user) ? $request->created_user : -1;
+        $s['created_user'] = $created_user = isset($request->created_user) ? $request->created_user : null;
         $s['date_from'] = $date_from = isset($request->date_from) && $request->date_from !='' ? $request->date_from : '';
         $s['date_to'] = $date_to = isset($request->date_to) && $request->date_to !='' ? $request->date_to : date('d-m-Y');               
 
@@ -52,7 +52,7 @@ class UserWorkController extends Controller
                 $query->where('user_work.created_user', $created_user);
             }
 
-        }else{
+        }else{         
             $userList = Account::where('role', 1)->get();            
             if( $created_user){
                 $query->where('user_work.created_user', $created_user);
