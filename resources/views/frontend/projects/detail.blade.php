@@ -21,7 +21,7 @@
 					</i>
 				</p>
 			</li>
-			@if(in_array(1, $tabArr))
+			@if(in_array(1, $tabSelected))
 			<li role="presentation" @if($tab_id == 1) class="active" @endif>
 				<a href="{{ route('detail-project', [$detail->slug]) }}" >
 					<i class="icon">
@@ -33,7 +33,7 @@
 			
 			</li>
 			@endif
-			@if(in_array(2, $tabArr))
+			@if(in_array(2, $tabSelected))
 		    <li role="presentation" @if($tab_id == 2) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'vi-tri']) }}" >
 		    		<i class="icon">
@@ -44,7 +44,7 @@
 		    	</a>
 		    </li>
 		    @endif
-		    @if(in_array(3, $tabArr))
+		    @if(in_array(3, $tabSelected))
 		    <li role="presentation" @if($tab_id == 3) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'tien-ich']) }}" >
 		    		<i class="icon">
@@ -55,7 +55,7 @@
 		    	</a>
 		    </li>
 		    @endif
-		    @if(in_array(3, $tabArr))
+		    @if(in_array(3, $tabSelected))
 		    <li role="presentation" @if($tab_id == 4) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'thiet-ke']) }}" >
 		    		<i class="icon">
@@ -66,7 +66,7 @@
 		    	</a>
 		    </li>
 		    @endif
-		    @if(in_array(5, $tabArr))
+		    @if(in_array(5, $tabSelected))
 		    <li role="presentation" @if($tab_id == 5) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'thanh-toan']) }}" >
 		    		<i class="icon">
@@ -77,7 +77,7 @@
 		    	</a>
 		    </li>
 		    @endif
-		    @if(in_array(6, $tabArr))
+		    @if(in_array(6, $tabSelected))
 		    <li role="presentation" @if($tab_id == 6) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'brochure']) }}" >
 		    		<p class="icon"><i class="fa fa-file-o" aria-hidden="true"></i></p>
@@ -85,7 +85,7 @@
 	    		</a>
     		</li>
     		@endif
-    		@if(in_array(7, $tabArr))
+    		@if(in_array(7, $tabSelected))
 		    <li role="presentation" @if($tab_id == 7) class="active" @endif>
 		    	<a href="{{ route('tab', [$detail->slug, 'lien-he']) }}" >
 		    		<i class="icon">
@@ -101,7 +101,7 @@
 
 	<div class="block-content" style="padding-bottom:50px">
 		<div class="tab-content">
-			@if(in_array(1, $tabArr) && $tab_id != 7)
+			@if(in_array(1, $tabSelected) && $tab_id != 7)
 			<div role="tabpanel" class="tab-pane fade in active" id="About">
 				@if($detailTab)
 				<div class="page-block">
@@ -122,7 +122,7 @@
 						</i>
 					</p>
 				</li>
-				@if(in_array(1, $tabArr))
+				@if(in_array(1, $tabSelected))
 				<li role="presentation" @if($tab_id == 1) class="active" @endif>
 					<a href="{{ route('detail-project', [$detail->slug]) }}" >
 						<i class="icon">
@@ -134,7 +134,7 @@
 				
 				</li>
 				@endif
-				@if(in_array(2, $tabArr))
+				@if(in_array(2, $tabSelected))
 			    <li role="presentation" @if($tab_id == 2) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'vi-tri']) }}" >
 			    		<i class="icon">
@@ -145,7 +145,7 @@
 			    	</a>
 			    </li>
 			    @endif
-			    @if(in_array(3, $tabArr))
+			    @if(in_array(3, $tabSelected))
 			    <li role="presentation" @if($tab_id == 3) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'tien-ich']) }}" >
 			    		<i class="icon">
@@ -156,7 +156,7 @@
 			    	</a>
 			    </li>
 			    @endif
-			    @if(in_array(3, $tabArr))
+			    @if(in_array(3, $tabSelected))
 			    <li role="presentation" @if($tab_id == 4) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'thiet-ke']) }}" >
 			    		<i class="icon">
@@ -167,7 +167,7 @@
 			    	</a>
 			    </li>
 			    @endif
-			    @if(in_array(5, $tabArr))
+			    @if(in_array(5, $tabSelected))
 			    <li role="presentation" @if($tab_id == 5) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'thanh-toan']) }}" >
 			    		<i class="icon">
@@ -178,7 +178,7 @@
 			    	</a>
 			    </li>
 			    @endif
-			    @if(in_array(6, $tabArr))
+			    @if(in_array(6, $tabSelected))
 			    <li role="presentation" @if($tab_id == 6) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'brochure']) }}" >
 			    		<p class="icon"><i class="fa fa-file-o" aria-hidden="true"></i></p>
@@ -186,7 +186,7 @@
 		    		</a>
 	    		</li>
 	    		@endif
-	    		@if(in_array(7, $tabArr))
+	    		@if(in_array(7, $tabSelected))
 			    <li role="presentation" @if($tab_id == 7) class="active" @endif>
 			    	<a href="{{ route('tab', [$detail->slug, 'lien-he']) }}" >
 			    		<i class="icon">
@@ -200,13 +200,13 @@
 			</ul>
 			@endif
 			
-			@if(in_array(7, $tabArr) && $tab_id == 7)
+			@if(in_array(7, $tabSelected) && $tab_id == 7)
 			<div role="tabpanel" class="tab-pane fade in active" id="Contact">
 				<h2 class="page-title">Liên Hệ</h2>
 				<div class="row">
 					<div class="col-sm-6 col-xs-12">
 						<img class="project-logo-contact" src="{{ $detail->logo_url ? Helper::showImage($detail->logo_url) : URL::asset('backend/dist/img/no-image.jpg') }}" alt="{{ $detail->name }}">
-						<h3 class="page-title-child">CÔNG TY TNHH SẢN XUẤT XÂY DỰNG THƯƠNG MẠI PHÚ LONG</h3>
+						<h3 class="page-title-child">CÔNG TY TNHH DỊCH VỤ TƯ VẤN BẤT ĐỘNG SẢN THANH PHÚ THỊNH LAND</h3>
 						<div class="block-table-nobor-tab">
 							<table class="table table-no-border">
 								<tr>
@@ -214,21 +214,21 @@
 										<label>Địa chỉ :</label>
 									</td>
 									<td>
-										185A Tây Hòa, Phường Phước Long A, Quận 9, Tp. Hồ Chí Minh.
+										Số 11, Đường 3052 Phạm Thế Hiển, Phường 7, Quận 8, Tp. Hồ Chí Minh.
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label>Phone :</label>
 									</td>
-									<td>0902.950.950</td>
+									<td>(028) 22 539 578</td>
 								</tr>
 								<tr>
 									<td>
 										<label>Email :</label>
 									</td>
 									<td>
-										<a href="mailto:nguyenlong0098@gmail.com?subject=feedback">nguyenlong0098@gmail.com</a>
+										<a href="mailto:harrytrieu.lands@gmail.com?subject=feedback">harrytrieu.lands@gmail.com</a>
 									</td>
 								</tr>
 							</table>

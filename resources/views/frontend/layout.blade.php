@@ -8,19 +8,15 @@
 <html lang="vi">
 <!--<![endif]-->
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K6NPFDM');</script>
-<!-- End Google Tag Manager -->
 	<title>@yield('title')</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="content-language" content="vi"/>
     <meta name="description" content="@yield('site_description')"/>
     <meta name="keywords" content="@yield('site_keywords')"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="google-site-verification" content="IFz-d9V8jZLB1iDG8BfKsKwhPB-FkpsacHLqk5Mpyzk" />
+    <meta name="wot-verification" content="b5ae556432dab929c4bb"/>
+    <meta property="article:author" content="https://www.facebook.com/thanhphuthinhland"/>
     <link rel="shortcut icon" href="@yield('favicon')" type="image/x-icon"/>
     <link rel="canonical" href="{{ url()->current() }}"/>        
     <meta property="og:locale" content="vi_VN" />
@@ -34,7 +30,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="@yield('site_description')" />
-    <meta name="twitter:title" content="@yield('title')" />        
+    <meta name="twitter:title" content="@yield('title')" /> 
+    <meta name="norton-safeweb-site-verification" content="jsltcbjyazv0hqqniayhz3kufz1e8zl33l9sp5jkbploag90bz4zh-1t675c2tm6yc1iiisvmazxhwlu4chr547-91-psjr5jge1rf9ph4c2cwzyh5h0ua5w0ev8pbkf" />       
     <meta name="twitter:image" content="{{ Helper::showImage($socialImage) }}" />
 	<link rel="icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon">
 	<!-- ===== Style CSS Common ===== -->
@@ -68,10 +65,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 @endif
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6NPFDM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 	
 	<header id="header" class="header">
 		<div class="header-register">
@@ -365,7 +358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.355643178182!2d106.62051131422558!3d10.707027992368664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752df8b1cc6c91%3A0x8e98312157254909!2zQ3R5IFROSEggRFYgVMawIFbhuqVuIELEkFMgVGhhbmggUGjDuiBUaOG7i25oIExhbmQ!5e0!3m2!1svi!2s!4v1498887826492" width="100%" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
 										<div role="tabpanel" class="tab-pane" id="fanpage" style="text-align:center !important;">
-											<div class="fb-page" data-href="https://www.facebook.com/thanhphuthinhland.com.vn/" data-tabs="timeline" data-width="478" data-height="345" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/thanhphuthinhland.com.vn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thanhphuthinhland.com.vn/">Nhà Đất Long An</a></blockquote></div>
+											<div class="fb-page" data-href="https://www.facebook.com/thanhphuthinhland/" data-tabs="timeline" data-width="478" data-height="345" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/thanhphuthinhland/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thanhphuthinhland/">Thanh Phú Thịnh Land</a></blockquote></div>
 										</div>
 									</div>
 								</div>

@@ -223,7 +223,7 @@ $bannerArr = DB::table('banner')->where(['object_id' => 5, 'object_type' => 3])-
            @if(isset($tuvan[0]))
             <div class="fengshui-news-hot">
                     <a href="{{ route('news-detail', ['slug' => $tuvan[0]['slug'], 'id' => $tuvan[0]['id']]) }}" title="{!! $tuvan[0]['title'] !!}">
-                <img src="{{ $tuvan[0]['image_url'] ? Helper::showImageThumb($tuvan[0]['image_url'], 2) : URL::asset('backend/dist/img/no-image.jpg') }}" alt="{!! $tuvan[0]['title'] !!}">
+                <img src="{{ $tuvan[0]['image_url'] ? Helper::showImageThumb($tuvan[0]['image_url'], 2, '325x200') : URL::asset('backend/dist/img/no-image.jpg') }}" alt="{!! $tuvan[0]['title'] !!}">
               </a>    
                     
                     <h4><a href="{{ route('news-detail', ['slug' => $tuvan[0]['slug'], 'id' => $tuvan[0]['id']]) }}" title="{!! $tuvan[0]['title'] !!}">{!! $tuvan[0]['title'] !!}</a></h4>

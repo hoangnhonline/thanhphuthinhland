@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\LandingProjects;
 use App\Models\ProContent;
+use App\Models\ProjectTab;
 use App\Models\MetaData;
 use App\Models\Tab;
 use App\Models\Contact;
@@ -95,12 +96,24 @@ class ProjectsController extends Controller
             $seo['title'] = $seo['description'] = $seo['keywords'] = $detail->name;
         }  
         $tab_id = 1;
-        return view('frontend.projects.detail', compact('seo', 'socialImage', 'detail', 'tabList', 'tabArr', 'detailTab', 'project_id', 'tab_id'));
+		
+		$tmpArr = ProjectTab::where('project_id', $project_id)->get();
+        
+        if( $tmpArr->count() > 0 ){
+            foreach ($tmpArr as $value) {
+                $tabSelected[] = $value->tab_id;
+            }
+        }
+		
+        return view('frontend.projects.detail', compact('seo', 'socialImage', 'detail', 'tabList', 'tabArr', 'detailTab', 'project_id', 'tab_id', 'tabSelected'));
     }
     public function tab(Request $request){
 
         $slug = $request->slug;        
         $detail = LandingProjects::where('slug', $slug)->first();
+		
+		
+		
         $slugtab = $request->slugtab;
         $rs = Tab::where('slug', $slugtab)->first();
         if($rs){
@@ -110,7 +123,13 @@ class ProjectsController extends Controller
         }
 
         $project_id = $detail->id;
-
+		$tmpArr = ProjectTab::where('project_id', $project_id)->get();
+        
+        if( $tmpArr->count() > 0 ){
+            foreach ($tmpArr as $value) {
+                $tabSelected[] = $value->tab_id;
+            }
+        }
         $tabList = LandingProjects::getListTabProject($project_id); 
 
         $tabArr = [];
@@ -129,7 +148,7 @@ class ProjectsController extends Controller
         }else{
             $seo['title'] = $seo['description'] = $seo['keywords'] = $detail->name;
         }        
-        return view('frontend.projects.detail', compact('seo', 'socialImage', 'detail', 'tabList', 'tabArr', 'detailTab', 'project_id', 'tab_id'));
+        return view('frontend.projects.detail', compact('seo', 'socialImage', 'detail', 'tabList', 'tabArr', 'detailTab', 'project_id', 'tab_id', 'tabSelected'));
     }
 
 }
