@@ -10,7 +10,35 @@ if(!isset($project_id)){
 	}
 	
 }
+
 ?>
+@if(\Request::route()->getName() == 'detail-project' || \Request::route()->getName() == 'tab')
+@if($bannerArr)
+<section class="block block-2-col container" style="margin-bottom:-10px !important;">
+	<div class="row">		
+		<div class="col-sm-12 col-xs-12">
+			<div class="block-slider-home">
+				<div class="owl-carousel dotsData owl-style2" data-nav="true" data-margin="0" data-items='1' data-autoplayTimeout="500" data-autoplay="true" data-loop="true">
+					<?php $i = 0; ?>
+					@foreach($bannerArr as $banner)
+					 <?php $i++; ?>
+					<div class="item-slide" data-dot="{{ $i }}">
+						@if($banner->ads_url !='')
+						<a href="{{ $banner->ads_url }}">
+						@endif
+							<img src="{{ Helper::showImage($banner->image_url) }}" alt="slide {{ $i }}">
+						@if($banner->ads_url !='')
+						</a>
+						@endif
+					</div><!-- item-slide1 -->
+					@endforeach							
+				</div>
+			</div><!-- /block-slider -->
+		</div><!-- /col-sm-8 col-xs-12 -->
+	</div>
+</section><!-- /block-2-col -->
+@endif
+@else
 <section class="block block-2-col container">
 	<div class="row">
 		<div class="col-sm-3 col-xs-12">
@@ -118,4 +146,6 @@ if(!isset($project_id)){
 		</div><!-- /col-sm-8 col-xs-12 -->
 	</div>
 	</section><!-- /block-2-col -->
+@endif
+
 @endsection

@@ -109,6 +109,7 @@
 			@include('frontend.partials.home-menu')
         </div>
 	</nav><!-- /navigation -->
+	@yield('slider')	
 	@yield('content')	
 
 	@include('frontend.home.footer')	
