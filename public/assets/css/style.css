@@ -527,7 +527,7 @@ img {
 /*===== Site Main ======*/
 #site-main {
     padding: 10px 0;
-    background: #fafafa;
+   /* background: #fafafa; */
     position: relative;
 }
 .main {
