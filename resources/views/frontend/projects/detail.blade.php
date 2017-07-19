@@ -14,7 +14,7 @@
 	</article>
 	<div class="block block-title">		  
 		<ul class="nav nav-tabs nav-tabs-langding" id="nav-tabs-langding" role="tablist">
-			<li role="presentation" >
+			<li role="presentation" class="tabs_logo" >
 				<p class="tabs-item-logo">
 					<i class="icon">
 						<img src="{{ $detail->logo_url ? Helper::showImage($detail->logo_url) : URL::asset('backend/dist/img/no-image.jpg') }}" alt="{!! $detail->name !!}">

@@ -399,6 +399,9 @@
 		width: 130px;
 		display: inline-block;
 	}
+	.tabs_logo {
+	  width: 100px !important;
+	}
 }
 
 
