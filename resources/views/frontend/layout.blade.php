@@ -140,205 +140,209 @@
 			<section class="row">
 				
 				@yield('content')
+				
 				@if(\Request::route()->getName() != "ky-gui" && \Request::route()->getName() != "ky-gui-thanh-cong" && (!isset($detailPage)))
 				<section class="col-sm-4 col-xs-12 block-sitebar">
-					@if(\Request::route()->getName() != "home" )
-					<article class="block block-box-search">
-						<div class="block-title">
-						<?php $type = isset($type) ? $type : 1 ; ?>
-							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="{{ (isset($type) && $type == 1) ? "active" : "" }}"><a href="javascript:void(0)" data-type="1" aria-controls="bdsb" role="tab" data-toggle="tab">BDS BÁN</a></li>
-    							<li role="presentation" class="{{ (isset($type) && $type == 2) ? "active" : "" }}"><a href="javascript:void(0)" data-type="2" aria-controls="bdsct" role="tab" data-toggle="tab">BDS CHO THUÊ</a></li>
-							</ul>
-						</div>
-						<div class="block-contents">
-						 	<!-- Tab panes -->
-							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active" id="bdsb">
-
-									<form action="{{ route('search') }}" method="GET" accept-charset="utf-8" class="search-content-input selectpicker-cus block-hover-selectpicker">
-								    	<input type="hidden" name="type" id="type" value="{{ isset($type) ? $type : 1 }}">
-								    	<div class="row-select">
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" name="estate_type_id" id="estate_type_id">
-													<option value="">Loại bất động sản</option>
-													@foreach($banList as $ban)
-													<option @if(isset($estate_type_id) && $estate_type_id == $ban->id) selected @endif class="option-lv1" value="{{ $ban->id }}">{{ $ban->name }}</option>
-													@endforeach
-												</select>
-											</div>											
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" id="city_id" name="city_id">
-													<option value="">Tỉnh/TP</option>
-													@foreach($cityList as $city)
-													<option @if(isset($city_id) && $city_id == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" id="district_id" name="district_id">
-													<option value="">Quận/Huyện</option>
-													<?php 
-													if(isset($city_id)){
-													$districtList = App\Models\District::where('city_id', $city_id)->get();
-													}
-													?>
-													@foreach($districtList as $district)
-													<option @if(isset($district_id) && $district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" id="ward_id" name="ward_id" data-live-search="true">
-													<option value="">Phường/Xã</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" id="street_id" name="street_id" data-live-search="true">
-													<option value="">Đường/Phố</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" id="project_id" name="project_id">
-													<option value="">Dự án</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" name="price_id" id="price_id">
-													<option value="">Mức giá</option>
-													@foreach($priceList as $price)
-													<option @if(isset($price_id) && $price_id == $price->id) selected @endif value="{{ $price->id }}">{{ $price->name }}</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" id="area_id" name="area_id" data-live-search="true">
-													<option value="">Diện tích</option>
-													@foreach($areaList as $area)
-													<option @if(isset($area_id) && $area_id == $area->id) selected @endif value="{{ $area->id }}">{{ $area->name }}</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" name="direction_id">
-													<option value="">Hướng nhà</option>
-													@foreach($directionList as $dir)
-													<option @if(isset($direction_id) && $direction_id == $dir->id) selected @endif value="{{ $dir->id }}">{{ $dir->name }}</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<select class="selectpicker form-control" data-live-search="true" name="no_room">
-													<option value="">Số phòng ngủ</option>
-													<option @if(isset($no_room) && $no_room == 1) selected @endif value="1">1+</option>
-													<option @if(isset($no_room) && $no_room == 2) selected @endif value="2">2+</option>
-													<option @if(isset($no_room) && $no_room == 3) selected @endif value="3">3+</option>
-													<option @if(isset($no_room) && $no_room == 4) selected @endif value="4">4+</option>
-													<option @if(isset($no_room) && $no_room == 5) selected @endif value="5">5+</option>
-													<option @if(isset($no_room) && $no_room == 6) selected @endif value="6">6+</option>
-												</select>
-											</div>											
-											<div class="form-group">
-												<button type="submit" id="btnSearch" class="btn btn-success"><i class="fa fa-search"></i> Tìm Kiếm</button>
-											</div>
-										</div>
-							    	</form>
-								</div>								
+					<div class="scroll_fix">
+						@if(\Request::route()->getName() != "home" )
+						<article class="block block-box-search">
+							<div class="block-title">
+							<?php $type = isset($type) ? $type : 1 ; ?>
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="{{ (isset($type) && $type == 1) ? "active" : "" }}"><a href="javascript:void(0)" data-type="1" aria-controls="bdsb" role="tab" data-toggle="tab">BDS BÁN</a></li>
+	    							<li role="presentation" class="{{ (isset($type) && $type == 2) ? "active" : "" }}"><a href="javascript:void(0)" data-type="2" aria-controls="bdsct" role="tab" data-toggle="tab">BDS CHO THUÊ</a></li>
+								</ul>
 							</div>
-						</div>
-					</article><!-- /block-box-search -->	
-					@endif
-					<article class="block-sidebar block-support">
-						<div class="block-title-common">
-							<h3><span class="icon-tile"><i class="fa fa-life-ring"></i></span> Hỗ Trợ Khách Hàng</h3>
-						</div>
-						<div class="block-contents">
-							<ul class="support">
-								@foreach($supportList as $sup)
-								<li class="item-support clearfix">
-									<img src="{{ $sup->image_url ? Helper::showImage($sup->image_url) : URL::asset('assets/images/contact2.jpg') }}" alt="{!! $sup->name !!}" style="max-width:80px">
-									<div class="item-support-info">
-										<h3>{!! $sup->name !!}</h3>
-										<p>{{ $sup->phone }}</p>
-										@if($sup->facebook)
-										<a target="_blank" href="https://www.facebook.com/messages/t/{{ $sup->facebook }}"><img src="{{ URL::asset('assets/images/rb_facebook.png') }}" alt="icon facebook" style="width:27px;height:27px"></a>
-										@endif
-										@if($sup->skype)
-										<a  href="skype:{{ $sup->skype }}?chat"><img src="{{ URL::asset('assets/images/skype.jpg') }}" alt="icon skype"></a>
-										@endif
-									</div>
-								</li>
-								@endforeach								
-							</ul>
-						</div>
-					</article><!-- /block-news-sidebar -->
-					<article class="block-sidebar block-news-sidebar">
-						<div class="block-title-common">
-							<h3><span class="icon-tile"><i class="fa fa-star"></i></span> Tin xem nhiều</h3>
-						</div>
-						<div class="block-contents">
-							<ul class="block-list-sidebar block-icon-title">
-								@foreach($tinRandom as $tin)
-		                      
-		                      <li><h4><a href="{{ route('news-detail', ['slug' => $tin['slug'], 'id' => $tin['id']]) }}" title="">{{ $tin['title'] }}</a></h4></li>
-		                     
-		                      @endforeach
-								
-							</ul>
-						</div>
-					</article><!-- /block-news-sidebar -->
+							<div class="block-contents">
+							 	<!-- Tab panes -->
+								<div class="tab-content">
+									<div role="tabpanel" class="tab-pane active" id="bdsb">
 
-					<article class="block-sidebar block-news-sidebar">
-						<div class="block-title-common">
-							<h3><span class="icon-tile"><i class="fa fa-building-o"></i></span> Dự án nổi bật</h3>
-						</div>
-						<div class="block-contents block-contents2">
-							<ul class="block-list-sidebar block-slide-sidebar">
-								<div class="bxslider">
-								@if($landingList)
-									@foreach($landingList as $value)
-									<div class="large-item">
-		                                <a href="{{ route('detail-project', [$value->slug])}}" title="{!! $value->name !!}"><img src="{{ $value->image_url ? Helper::showImageThumb($value->image_url, 3, '306x194') : URL::asset('backend/dist/img/no-image.jpg') }}" alt="" /></a>
-		                                <h4><a href="{{ route('detail-project', [$value->slug])}}" title="{!! $value->name !!}">{!! $value->name !!}</a></h4>
-		                                <p>{{ $value->address }}</p>
-		                            </div>
-		                            @endforeach
-		                        @endif
+										<form action="{{ route('search') }}" method="GET" accept-charset="utf-8" class="search-content-input selectpicker-cus block-hover-selectpicker">
+									    	<input type="hidden" name="type" id="type" value="{{ isset($type) ? $type : 1 }}">
+									    	<div class="row-select">
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" name="estate_type_id" id="estate_type_id">
+														<option value="">Loại bất động sản</option>
+														@foreach($banList as $ban)
+														<option @if(isset($estate_type_id) && $estate_type_id == $ban->id) selected @endif class="option-lv1" value="{{ $ban->id }}">{{ $ban->name }}</option>
+														@endforeach
+													</select>
+												</div>											
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" id="city_id" name="city_id">
+														<option value="">Tỉnh/TP</option>
+														@foreach($cityList as $city)
+														<option @if(isset($city_id) && $city_id == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" id="district_id" name="district_id">
+														<option value="">Quận/Huyện</option>
+														<?php 
+														if(isset($city_id)){
+														$districtList = App\Models\District::where('city_id', $city_id)->get();
+														}
+														?>
+														@foreach($districtList as $district)
+														<option @if(isset($district_id) && $district_id == $district->id) selected @endif value="{{ $district->id }}">{{ $district->name }}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" id="ward_id" name="ward_id" data-live-search="true">
+														<option value="">Phường/Xã</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" id="street_id" name="street_id" data-live-search="true">
+														<option value="">Đường/Phố</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" id="project_id" name="project_id">
+														<option value="">Dự án</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" name="price_id" id="price_id">
+														<option value="">Mức giá</option>
+														@foreach($priceList as $price)
+														<option @if(isset($price_id) && $price_id == $price->id) selected @endif value="{{ $price->id }}">{{ $price->name }}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" id="area_id" name="area_id" data-live-search="true">
+														<option value="">Diện tích</option>
+														@foreach($areaList as $area)
+														<option @if(isset($area_id) && $area_id == $area->id) selected @endif value="{{ $area->id }}">{{ $area->name }}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" name="direction_id">
+														<option value="">Hướng nhà</option>
+														@foreach($directionList as $dir)
+														<option @if(isset($direction_id) && $direction_id == $dir->id) selected @endif value="{{ $dir->id }}">{{ $dir->name }}</option>
+														@endforeach
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="selectpicker form-control" data-live-search="true" name="no_room">
+														<option value="">Số phòng ngủ</option>
+														<option @if(isset($no_room) && $no_room == 1) selected @endif value="1">1+</option>
+														<option @if(isset($no_room) && $no_room == 2) selected @endif value="2">2+</option>
+														<option @if(isset($no_room) && $no_room == 3) selected @endif value="3">3+</option>
+														<option @if(isset($no_room) && $no_room == 4) selected @endif value="4">4+</option>
+														<option @if(isset($no_room) && $no_room == 5) selected @endif value="5">5+</option>
+														<option @if(isset($no_room) && $no_room == 6) selected @endif value="6">6+</option>
+													</select>
+												</div>											
+												<div class="form-group">
+													<button type="submit" id="btnSearch" class="btn btn-success"><i class="fa fa-search"></i> Tìm Kiếm</button>
+												</div>
+											</div>
+								    	</form>
+									</div>								
 								</div>
-								<div id="bx-pager" class="bx-thumbnail">
-									@if($landing2List)
-									@foreach($landing2List as $value)
-									<div class="item">
-										<div class="item-child">
-				                            <a data-slide-index="0" class="slide_title" onclick="location.href='{{ route('detail-project', [$value->slug])}}'" href="{{ route('detail-project', [$value->slug])}}" title=""><img class="avatar" src="{{ $value->image_url ? Helper::showImageThumb($value->image_url, 3, '308x190') : URL::asset('backend/dist/img/no-image.jpg') }}" alt="" /></a>
-				                            <div class="slide_info">
-				                                <a  onclick="location.href='{{ route('detail-project', [$value->slug])}}'" href="{{ route('detail-project', [$value->slug])}}" title="">{{ $value->name }}</a>
-				                                <p>{{ $value->address }}</p>
-				                            </div>
+							</div>
+						</article><!-- /block-box-search -->	
+						@endif
+						<article class="block-sidebar block-support">
+							<div class="block-title-common">
+								<h3><span class="icon-tile"><i class="fa fa-life-ring"></i></span> Hỗ Trợ Khách Hàng</h3>
+							</div>
+							<div class="block-contents">
+								<ul class="support">
+									@foreach($supportList as $sup)
+									<li class="item-support clearfix">
+										<img src="{{ $sup->image_url ? Helper::showImage($sup->image_url) : URL::asset('assets/images/contact2.jpg') }}" alt="{!! $sup->name !!}" style="max-width:80px">
+										<div class="item-support-info">
+											<h3>{!! $sup->name !!}</h3>
+											<p>{{ $sup->phone }}</p>
+											@if($sup->facebook)
+											<a target="_blank" href="https://www.facebook.com/messages/t/{{ $sup->facebook }}"><img src="{{ URL::asset('assets/images/rb_facebook.png') }}" alt="icon facebook" style="width:27px;height:27px"></a>
+											@endif
+											@if($sup->skype)
+											<a  href="skype:{{ $sup->skype }}?chat"><img src="{{ URL::asset('assets/images/skype.jpg') }}" alt="icon skype"></a>
+											@endif
+										</div>
+									</li>
+									@endforeach								
+								</ul>
+							</div>
+						</article><!-- /block-news-sidebar -->
+						<article class="block-sidebar block-news-sidebar">
+							<div class="block-title-common">
+								<h3><span class="icon-tile"><i class="fa fa-star"></i></span> Tin xem nhiều</h3>
+							</div>
+							<div class="block-contents">
+								<ul class="block-list-sidebar block-icon-title">
+									@foreach($tinRandom as $tin)
+			                      
+			                      <li><h4><a href="{{ route('news-detail', ['slug' => $tin['slug'], 'id' => $tin['id']]) }}" title="">{{ $tin['title'] }}</a></h4></li>
+			                     
+			                      @endforeach
+									
+								</ul>
+							</div>
+						</article><!-- /block-news-sidebar -->
+
+						<article class="block-sidebar block-news-sidebar">
+							<div class="block-title-common">
+								<h3><span class="icon-tile"><i class="fa fa-building-o"></i></span> Dự án nổi bật</h3>
+							</div>
+							<div class="block-contents block-contents2">
+								<ul class="block-list-sidebar block-slide-sidebar">
+									<div class="bxslider">
+									@if($landingList)
+										@foreach($landingList as $value)
+										<div class="large-item">
+			                                <a href="{{ route('detail-project', [$value->slug])}}" title="{!! $value->name !!}"><img src="{{ $value->image_url ? Helper::showImageThumb($value->image_url, 3, '306x194') : URL::asset('backend/dist/img/no-image.jpg') }}" alt="" /></a>
+			                                <h4><a href="{{ route('detail-project', [$value->slug])}}" title="{!! $value->name !!}">{!! $value->name !!}</a></h4>
+			                                <p>{{ $value->address }}</p>
 			                            </div>
-			                        </div>
-			                        @endforeach
-			                        @endif			                       
-			                        
-								</div>
-							</ul>
-						</div>
-					</article><!-- /block-news-sidebar -->
+			                            @endforeach
+			                        @endif
+									</div>
+									<div id="bx-pager" class="bx-thumbnail">
+										@if($landing2List)
+										@foreach($landing2List as $value)
+										<div class="item">
+											<div class="item-child">
+					                            <a data-slide-index="0" class="slide_title" onclick="location.href='{{ route('detail-project', [$value->slug])}}'" href="{{ route('detail-project', [$value->slug])}}" title=""><img class="avatar" src="{{ $value->image_url ? Helper::showImageThumb($value->image_url, 3, '308x190') : URL::asset('backend/dist/img/no-image.jpg') }}" alt="" /></a>
+					                            <div class="slide_info">
+					                                <a  onclick="location.href='{{ route('detail-project', [$value->slug])}}'" href="{{ route('detail-project', [$value->slug])}}" title="">{{ $value->name }}</a>
+					                                <p>{{ $value->address }}</p>
+					                            </div>
+				                            </div>
+				                        </div>
+				                        @endforeach
+				                        @endif			                       
+				                        
+									</div>
+								</ul>
+							</div>
+						</article><!-- /block-news-sidebar -->
 
-					<article class="block-sidebar block-news-sidebar">
-						<div class="block-title-common">
-							<h3><span class="icon-tile"><i class="fa fa-th-list"></i></span> Liên kết nổi bật</h3>
-						</div>
-						<div class="block-contents">
-							<ul class="block-list-sidebar block-icon1-title">
-								@foreach($customLink as $link)
-								<li><h4><a href="{{ $link->link_url }}" title="{{ $link->link_text }}">{{ $link->link_text }}</a></h4></li>
-								@endforeach
-							</ul>							
-						</div>
-					</article><!-- /block-news-sidebar -->
+						<article class="block-sidebar block-news-sidebar">
+							<div class="block-title-common">
+								<h3><span class="icon-tile"><i class="fa fa-th-list"></i></span> Liên kết nổi bật</h3>
+							</div>
+							<div class="block-contents">
+								<ul class="block-list-sidebar block-icon1-title">
+									@foreach($customLink as $link)
+									<li><h4><a href="{{ $link->link_url }}" title="{{ $link->link_text }}">{{ $link->link_text }}</a></h4></li>
+									@endforeach
+								</ul>							
+							</div>
+						</article><!-- /block-news-sidebar -->
+					</div>
 				</section><!-- /block-site-right -->
 				@endif
+
 				@if( \Request::route()->getName() == 'home')
 				<section>
 					<article class="block block-inews block-news-new">
@@ -439,6 +443,10 @@
 		          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		        }
 		    });
+		    $('.scroll_fix').sticky({ 
+		        topSpacing: 45,
+		        bottomSpacing: 500,
+		     });
 		    $('#selectVideo').change(function(){
 		    	$('#load_video').attr('src', 'https://www.youtube.com/embed/' + $(this).val());
 		    	window.frames['load_video'].location.reload();
