@@ -3006,3 +3006,6 @@ h3.page-title-child {
 .block-call a {
   color: #fff;
 }
+.tabs_logo {
+    width: 130px !important;
+}
