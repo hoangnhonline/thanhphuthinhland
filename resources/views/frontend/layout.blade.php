@@ -442,11 +442,7 @@
 		        headers: {
 		          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		        }
-		    });
-		    $('.scroll_fix').sticky({ 
-		        topSpacing: 45,
-		        bottomSpacing: 500,
-		     });
+		    });		    
 		    $('#selectVideo').change(function(){
 		    	$('#load_video').attr('src', 'https://www.youtube.com/embed/' + $(this).val());
 		    	window.frames['load_video'].location.reload();
