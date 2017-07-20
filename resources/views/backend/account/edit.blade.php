@@ -67,7 +67,7 @@
                     <option value="">--Chọn Mod--</option>
                     @if($modList)
                       @foreach($modList as $mod)
-                    <option value="{{ $mod->id }}">{{ $mod->full_name }}</option> 
+                    <option value="{{ $mod->id }}" {{ $mod->id == $detail->leader_id ? "selected" : "" }}>{{ $mod->full_name }}</option> 
                       @endforeach
                     @endif                                
                   </select>
@@ -116,6 +116,11 @@
         }
       });
       @endif
+      if($('#role').val() == 1){
+        $('#chon_mod').show();
+      }else{
+        $('#chon_mod').hide();
+      }
     });
 </script>
 @stop
