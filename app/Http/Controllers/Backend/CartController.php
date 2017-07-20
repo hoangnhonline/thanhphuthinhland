@@ -23,8 +23,12 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $user_id = Auth::user()->id;
-        $type = isset($request->type) ? $request->type : 1;
-        $query = Cart::where('type', $type);
+        $type = isset($request->type) ? $request->type : null;
+        if($type){
+            $query = Cart::where('type', $type);
+        }else{
+            $query = Cart::whereRaw('1');    
+        }        
 
         if(Auth::user()->role == 1){
             $query->join('user_cart', 'user_cart.cart_id', '=' ,'cart.id')->where('user_cart.user_id', $user_id);
