@@ -31,7 +31,8 @@
           <form class="form-inline" role="form" method="GET" action="{{ route('cart.index') }}">
             <div class="form-group">
               <label for="email">Loại :</label>
-              <select class="form-control" name="type" id="type">                                
+              <select class="form-control" name="type" id="type">                     
+              <option value="">--All--</option>           
                 <option value="1" {{ 1 == $type ? "selected" : "" }}>Chưng cư</option>
                 <option value="2" {{ 2 == $type ? "selected" : "" }}>Đất nền</option>                
               </select>
