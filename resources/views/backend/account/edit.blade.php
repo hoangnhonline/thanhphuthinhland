@@ -59,7 +59,20 @@
                     <option value="3" {{ old('role', $detail->role) == 3 ? "selected" : "" }}>Admin</option>
                     @endif                    
                   </select>
-                </div>      
+                </div>
+                @if(Auth::user()->role == 3)
+                <div class="form-group" style="display:none" id="chon_mod">
+                  <label>Mod</label>
+                  <select class="form-control" name="leader_id" id="leader_id">
+                    <option value="">--Chọn Mod--</option>
+                    @if($modList)
+                      @foreach($modList as $mod)
+                    <option value="{{ $mod->id }}">{{ $mod->full_name }}</option> 
+                      @endforeach
+                    @endif                                
+                  </select>
+                </div> 
+                @endif                 
                 <div class="form-group">
                   <label>Trạng thái</label>
                   <select class="form-control" name="status" id="status">                                      
@@ -89,12 +102,20 @@
 @stop
 @section('javascript_page')
 <script type="text/javascript">
-    $(document).ready(function(){
+     $(document).ready(function(){
       $('#formData').submit(function(){
         $('#btnSave').hide();
         $('#btnLoading').show();
       });
+      @if(Auth::user()->role == 3)
+      $('#role').change(function(){
+        if($(this).val() == 1){
+          $('#chon_mod').show();
+        }else{
+          $('#chon_mod').hide();
+        }
+      });
+      @endif
     });
-    
 </script>
 @stop

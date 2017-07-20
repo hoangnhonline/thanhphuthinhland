@@ -136,8 +136,8 @@ class AccountController extends Controller
             return redirect()->route('dashboard.index');
         }
         $detail = Account::find($id);
-        
-        return view('backend.account.edit', compact( 'detail'));
+        $modList = Account::where(['role' => 2, 'status' => 1])->get();
+        return view('backend.account.edit', compact( 'detail', 'modList'));
     }
     public function update(Request $request)
     {
