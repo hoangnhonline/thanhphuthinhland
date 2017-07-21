@@ -29,7 +29,7 @@ class UserWorkController extends Controller
 
         $query = UserWork::whereRaw('1');
         if( $status ){
-            $query->where('status', $status);
+            $query->where('user_work.status', $status);
         }        
         if( $group_id ){
             $query->where('group_id', $group_id);
