@@ -55,10 +55,10 @@
                           <label>
                           <input type="checkbox" data-parent="cho-thue" data-cap="1" data-value="{{ $value->id }}" name="cap1[]" value="{{ $value->id }}" data-type="3"> {{ $value->name }}
                           </label>
-                          <input type="hidden" name="cap1_type[]" value="1">
-                          <input type="hidden" name="cap1_title[]" value="{{ $value->name }}">
-                          <input type="hidden" name="slug[]" value="{{ $value->slug }}">
-                          <input type="hidden" name="object_id[]" value="{{ $value->id }}">
+                          <input type="hidden" name="cap1_type[{{ $value->id }}]" value="1">
+                          <input type="hidden" name="cap1_title[{{ $value->id }}]" value="{{ $value->name }}">
+                          <input type="hidden" name="slug[{{ $value->id }}]" value="{{ $value->slug }}">
+                          <input type="hidden" name="object_id[{{ $value->id }}]" value="{{ $value->id }}">
                         </li>
                         @endforeach
                       </ul>

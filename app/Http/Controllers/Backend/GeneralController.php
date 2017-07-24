@@ -53,7 +53,7 @@ class GeneralController extends Controller
         return view('backend.menu.index', compact( 'landingList', 'articlesCateList', 'pageList'));
     }
     public function renderMenu(Request $request){        
-        $dataArr = $request->all();
+        $dataArr = $request->all();       
         return view('backend.menu.render-menu', compact( 'dataArr' ));   
     }
     public function storeMenu(Request $request){
