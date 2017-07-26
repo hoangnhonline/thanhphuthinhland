@@ -17,6 +17,16 @@
 </article>
 	<article class="block block-news-new block-news-cate clearfix">
 		<div class="block-cate-title"><h1>{!! $rs->name !!} tại Việt Nam</h1></div>
+		@if($seo['custom_text'])
+		<div class="col-sm-12 col-xs-12">
+			<div class="row">				
+				<div class="block-contents">
+					<?php echo $seo['custom_text'] ? $seo['custom_text'] : ""; ?>
+				</div>
+			</div>
+		</div>
+		@endif
+		<div class="clearfix"></div>
 		<div class="block-searchresult">
 			<h2>Tìm kiếm theo các tiêu chí: <b style="color: #37a344;">{!! $rs->name !!}</b></h2>
 			<span class="block-countresult">Có <b>{{ number_format(count($productList)) }}</b> bất động sản</span>

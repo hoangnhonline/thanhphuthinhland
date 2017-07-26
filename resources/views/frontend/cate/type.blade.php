@@ -12,6 +12,16 @@
 <section class="col-sm-8 col-xs-12 block-sitemain">
 	<article class="block block-news-new block-news-cate clearfix">
 		<div class="block-cate-title"><h1>{!! $name !!}</h1></div>
+		@if($seo['custom_text'])
+		<div class="col-sm-12 col-xs-12">
+			<div class="row">				
+				<div class="block-contents">
+					<?php echo $seo['custom_text'] ? $seo['custom_text'] : ""; ?>
+				</div>
+			</div>
+		</div>
+		@endif
+		<div class="clearfix"></div>
 		<div class="block-searchresult">			
 			<span class="block-countresult">Có <b>{{ number_format(count($productList)) }}</b> bất động sản</span>
 		</div>
