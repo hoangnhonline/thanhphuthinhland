@@ -32,6 +32,7 @@
     <meta name="twitter:description" content="@yield('site_description')" />
     <meta name="twitter:title" content="@yield('title')" /> 
     <meta name="norton-safeweb-site-verification" content="jsltcbjyazv0hqqniayhz3kufz1e8zl33l9sp5jkbploag90bz4zh-1t675c2tm6yc1iiisvmazxhwlu4chr547-91-psjr5jge1rf9ph4c2cwzyh5h0ua5w0ev8pbkf" />       
+    <meta name="wot-verification" content="bcbd535ff2ff0c0067e0"/>
     <meta name="twitter:image" content="{{ Helper::showImage($socialImage) }}" />
 	<link rel="icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon">
 	<!-- ===== Style CSS Common ===== -->
