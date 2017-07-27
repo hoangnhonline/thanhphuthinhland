@@ -113,7 +113,7 @@
 	@yield('content')	
 
 	@include('frontend.home.footer')	
-
+	<div class="block-call"><a href="tel:0911035679"><i class="fa fa-phone-square"></i>0911.035.679</a></div><!-- /.block-call -->
 	<a id="return-to-top" class="td-scroll-up" href="javascript:void(0)">
   		<i class="fa fa-angle-up" aria-hidden="true"></i>
 	</a>
