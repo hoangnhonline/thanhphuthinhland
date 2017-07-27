@@ -64,6 +64,10 @@
                   <input type="text" class="form-control" name="twitter_fanpage" id="twitter_fanpage" value="{{ $settingArr['twitter_fanpage'] }}">
                 </div>
                 <div class="form-group">
+                  <label>Hotline</label>
+                  <input type="text" class="form-control" name="hotline" id="hotline" value="{{ $settingArr['hotline'] }}">
+                </div>
+                <div class="form-group">
                   <label>Thông tin footer</label>
                   <textarea class="form-control" rows="3" name="cty_info" id="cty_info">{{ $settingArr['cty_info'] }}</textarea>
                 </div>

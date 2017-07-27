@@ -440,7 +440,7 @@ src="https://www.facebook.com/tr?id=252732271885321&ev=PageView
 	@if(\Request::route()->getName() != "du-an" && !isset($detailPage))
 	@include('frontend.partials.ads')	
 	@endif
-	<div class="block-call"><a href="tel:0911035679"><i class="fa fa-phone-square"></i>0911.035.679 <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(chạm để gọi)</a></div><!-- /.block-call -->
+	<div class="block-call"><a href="tel:{{ $settingArr['hotline'] }}"><i class="fa fa-phone-square"></i>{{ $settingArr['hotline'] }} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(chạm để gọi)</a></div><!-- /.block-call -->
 	<a id="return-to-top" class="td-scroll-up" href="javascript:void(0)">
   		<i class="fa fa-angle-up" aria-hidden="true"></i>
 	</a>
