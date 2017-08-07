@@ -8,6 +8,7 @@ use Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\UserMod;
 use Helper, File, Session, Auth;
 
 class AccountController extends Controller
@@ -137,7 +138,16 @@ class AccountController extends Controller
         }
         $detail = Account::find($id);
         $modList = Account::where(['role' => 2, 'status' => 1])->get();
-        return view('backend.account.edit', compact( 'detail', 'modList'));
+        $modSelected = [];
+        if($detail->role == 1){
+            $tmp = $detail->mod();
+            if($tmp){
+                foreach($tmp as $mod){
+                    $modSelected[] = $mod->mod_id;
+                }
+            }        
+        }
+        return view('backend.account.edit', compact( 'detail', 'modList', 'modSelected'));
     }
     public function update(Request $request)
     {

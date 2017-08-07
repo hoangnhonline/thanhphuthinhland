@@ -61,18 +61,21 @@
                   </select>
                 </div> 
                 @if(Auth::user()->role == 3)
-                <div class="form-group" style="display:none" id="chon_mod">
-                  <label>Mod</label>
-                  <select class="form-control" name="leader_id" id="leader_id">
-                    <option value="">--Chọn Mod--</option>
+                <div class="form-group col-md-12" style="display:none" id="chon_mod">
+                  <p class="clearfix"><strong>Mod</strong></p>
+                  <div style="clear:both"></div>     
                     @if($modList)
                       @foreach($modList as $mod)
-                    <option value="{{ $mod->id }}">{{ $mod->full_name }}</option> 
+                      <div class="checkbox col-md-4" style="margin-top:0px !important;">
+                        <input type="checkbox" name="mod_id[]" value="{{ $mod->id }}">
+                        <label for="">{{ $mod->full_name }}</label>
+                      </div>
                       @endforeach
                     @endif                                
-                  </select>
+                  
                 </div> 
-                @endif                           
+                @endif      
+                <div class="clearfix"></div>                     
                 <div class="form-group">
                   <label>Trạng thái</label>
                   <select class="form-control" name="status" id="status">                                      

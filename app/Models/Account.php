@@ -24,4 +24,8 @@ class Account extends Model  {
      * @var array
      */
     protected $fillable = ['full_name', 'email', 'password', 'status', 'changed_password', 'remember_token', 'role', 'leader_id', 'created_user', 'updated_user'];
+
+    public function mod(){
+        return $this->hasMany('App\Models\UserMod', 'cart_id');
+    }
 }
