@@ -105,6 +105,12 @@ class AccountController extends Controller
         $dataArr['updated_user'] = Auth::user()->id;
 
         $rs = Account::create($dataArr);
+
+        if(!empty($dataArr['mod_id'])){
+            foreach($dataArr['mod_id'] as $mod_id){
+                UserMod::create(['user_id' => $rs->id, 'mod_id' => $mod_id]);
+            }
+        }
         /*
         if ( $rs->id > 0 ){
             Mail::send('backend.account.mail', ['full_name' => $request->full_name, 'password' => $tmpPassword, 'email' => $request->email], function ($message) use ($request) {
@@ -140,7 +146,8 @@ class AccountController extends Controller
         $modList = Account::where(['role' => 2, 'status' => 1])->get();
         $modSelected = [];
         if($detail->role == 1){
-            $tmp = $detail->mod();
+            $tmp = UserMod::where('user_id', $id)->get();
+            
             if($tmp){
                 foreach($tmp as $mod){
                     $modSelected[] = $mod->mod_id;
@@ -165,6 +172,13 @@ class AccountController extends Controller
         $dataArr['updated_user'] = Auth::user()->id;
 
         $model->update($dataArr);
+
+        UserMod::where('user_id', $dataArr['id'])->delete();
+        if(!empty($dataArr['mod_id'])){
+            foreach($dataArr['mod_id'] as $mod_id){
+                UserMod::create(['user_id' => $dataArr['id'], 'mod_id' => $mod_id]);
+            }
+        }
 
         Session::flash('message', 'Cập nhật tài khoản thành công');
 

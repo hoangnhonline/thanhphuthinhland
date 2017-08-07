@@ -67,8 +67,8 @@
                     @if($modList)
                       @foreach($modList as $mod)
                       <div class="checkbox col-md-4" style="margin-top:0px !important;">
-                        <input type="checkbox" name="mod_id[]" value="{{ $mod->id }}" {{ in_array($mod->id, $modSelected) ? "checked=checked" : "" }}>
-                        <label for="">{{ $mod->full_name }}</label>
+                        <input type="checkbox" id="mod{{$mod->id}}" name="mod_id[]" value="{{ $mod->id }}" {{ in_array($mod->id, $modSelected) ? "checked=checked" : "" }}>
+                        <label for="mod{{$mod->id}}">{{ $mod->full_name }}</label>
                       </div>
                       @endforeach
                     @endif
