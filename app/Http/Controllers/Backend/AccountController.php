@@ -28,7 +28,10 @@ class AccountController extends Controller
         $query = Account::where('status', '>', 0);
 
         if( $role == 2){
-            $query->where(['role' => 1, 'leader_id' => Auth::user()->id]);
+            $leader_id = Auth::user()->id;
+            $query->where('role',1);
+                $query->join('user_mod', 'user_mod.user_id', '=', 'users.id')
+                    ->where('user_mod.mod_id', $leader_id);
         }else{
             $role = $request->role ? $request->role : 0;
             if($role > 0){
@@ -36,7 +39,8 @@ class AccountController extends Controller
             }
             $leader_id = $request->leader_id ? $request->leader_id : 0;
             if($leader_id > 0){
-                $query->where('leader_id', $leader_id);
+                $query->join('user_mod', 'user_mod.user_id', '=', 'users.id')
+                    ->where('user_mod.mod_id', $leader_id);
             }
         }
         $items = $query->orderBy('id', 'desc')->get();
@@ -97,7 +101,7 @@ class AccountController extends Controller
         ]);       
         
         $tmpPassword = str_random(10);
-        $dataArr['leader_id'] = Auth::user()->role == 2 ? Auth::user()->id : $dataArr['leader_id'];
+                
         $dataArr['password'] = Hash::make('123465@');
         
         $dataArr['created_user'] = Auth::user()->id;

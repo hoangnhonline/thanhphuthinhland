@@ -98,14 +98,16 @@
                 <?php $i ++; ?>
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>       
-                <td>
-                  {{ date('d-m-Y', strtotime($item->work_date)) }}
-
+                <td style="white-space:nowrap">
                    @if( $item->is_hot == 1 )
                   <img class="img-thumbnail" src="{{ URL::asset('backend/dist/img/star.png')}}" alt="Ưu tiên" title="Ưu tiên" />
-                  @endif
+                  @endif 
+                  <br>
+                  {{ date('d-m-Y', strtotime($item->work_date)) }}
+
+                  
                 </td>    
-                <td>{{ $item->full_name }}</td>    
+                <td style="white-space:nowrap"><h4>{{ $item->full_name }}</h4></td>    
                 <td>                                    
                   <p><?php echo $item->description; ?></p>
                 </td>

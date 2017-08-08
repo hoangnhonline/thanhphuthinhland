@@ -45,9 +45,17 @@ class UserWorkController extends Controller
         $userList = (object) [];
         if(Auth::user()->role == 1 ){
             $query->where('user_work.created_user', Auth::user()->id);
-        }elseif(Auth::user()->role == 2){ // leader
-            $query->where('user_work.leader_id', Auth::user()->id);
-            $userList = Account::where(['leader_id' => Auth::user()->id])->get();
+        }elseif(Auth::user()->role == 2){
+            $userList = Account::where('role', 1)->join('user_mod', 'user_mod.user_id', '=', 'users.id')
+                    ->where('user_mod.mod_id', Auth::user()->id)->get();
+            if($userList){
+                foreach($userList as $tmp)
+                {
+                    $userIdArr[] = $tmp->user_id;
+                }
+            }
+            $query->whereIn('user_work.created_user', $userIdArr);            
+
             if( $created_user > -1){
                 $query->where('user_work.created_user', $created_user);
             }
