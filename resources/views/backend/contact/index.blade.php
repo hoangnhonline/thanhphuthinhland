@@ -75,7 +75,7 @@
                 <?php $i ++; ?>
               <tr id="row-{{ $item->id }}">
                 <td><span class="order">{{ $i }}</span></td>                       
-                <td>{{ $item->project->name }}</td>
+                <td>{{ $item->project ? $item->project->name : "" }}</td>
                 <td>                  
                   {{ $item->gender == 1 ? "Anh " : "Chị " }}
                   @if($item->full_name != '')
