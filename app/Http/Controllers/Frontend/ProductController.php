@@ -76,6 +76,7 @@ class ProductController extends Controller
             
             $name = $seo['title'] = $seo['description'] = $seo['keywords'] = 'Nhà đất bán';
              $type = 1;
+             $seo['custom_text'] = "";
             return view('frontend.cate.type', compact('productList','productArr', 'socialImage', 'seo', 'name', 'type'));
         
     }
@@ -98,6 +99,7 @@ class ProductController extends Controller
         
         $name = $seo['title'] = $seo['description'] = $seo['keywords'] = 'Nhà đất cho thuê';
         $type = 2;
+        $seo['custom_text'] = "";
         return view('frontend.cate.type', compact('productList','productArr', 'socialImage', 'seo', 'name', 'type'));
         
     }
