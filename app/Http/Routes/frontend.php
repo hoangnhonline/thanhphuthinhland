@@ -21,7 +21,9 @@ Route::group(['namespace' => 'Frontend'], function()
     Route::get('/nha-dat-ban', ['as' => 'ban', 'uses' => 'ProductController@ban']);
     Route::get('/nha-dat-cho-thue', ['as' => 'cho-thue', 'uses' => 'ProductController@choThue']);
     Route::post('/project-contact', ['as' => 'project-contact', 'uses' => 'ProjectsController@contact']);
-    
+    Route::get('/tin-tuc/dat-nen-long-an-mieng-moi-beo-bo-cua-gioi-dau-tu-p63.html', function(){ 
+        return Redirect::to('/nha-dat-long-an.html', 301);         
+    });
     Route::get('/du-an', ['as' => 'du-an', 'uses' => 'ProjectsController@index']);    
     Route::get('du-an/{slug}', ['as' => 'detail-project', 'uses' => 'ProjectsController@detail']);
     Route::get('du-an/{slug}/{slugtab}', ['as' => 'tab', 'uses' => 'ProjectsController@tab']);
