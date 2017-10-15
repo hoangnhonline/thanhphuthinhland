@@ -420,11 +420,9 @@ class ProductController extends Controller
                             $img = Image::make(config('icho.upload_path').$destionation);
                             $w_img = $img->width();
                             $h_img = $img->height();
-                            $tile = 0.0140056;
-                            $w_tile = $w_img/170;
-                            $h_tile = $h_img/105;
+                            $tile = 170/105;
                          
-                            if($w_tile - $h_tile <= 0.0140056){
+                            if($w_img/$h_img <= $tile){
                                 Image::make(config('icho.upload_path').$destionation)->resize(170, null, function ($constraint) {
                                         $constraint->aspectRatio();
                                 })->crop(170, 105)->save(config('icho.upload_thumbs_path').$destionation);
