@@ -117,7 +117,7 @@ src="https://www.facebook.com/tr?id=252732271885321&ev=PageView
 		            </div>
 				</div> -->
 				<div class="slogan">
-		            <p><i class="fa fa-phone"></i> Hotline : 0911 035 679 - 0915 455 551</p>
+		            <p><i class="fa fa-phone"></i> Hotline : <a href="tel:0919356178" title="Hotline" style=" color: white; ">0919.356.178</a></p>
 		        </div>
 			</div>
 		</div>
@@ -724,6 +724,8 @@ src="https://www.facebook.com/tr?id=252732271885321&ev=PageView
 			});
 		});
 	</script>
+<!------------DMCA------------------->
+<a href="//www.dmca.com/Protection/Status.aspx?ID=6d8044a5-a139-4276-8dab-edb984ad5993" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/dmca-badge-w100-5x1-05.png?ID=6d8044a5-a139-4276-8dab-edb984ad5993" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
 <!-------------google--------------->
 <script type="text/javascript">
 /* <![CDATA[ */
