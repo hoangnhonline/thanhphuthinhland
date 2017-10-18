@@ -119,7 +119,7 @@
           </a>       
         </li>
         
-      @if(Auth::user()->role > 1)
+      @if(Auth::user()->role == 3)
       <li {{ in_array(\Request::route()->getName(), ['newsletter.edit', 'newsletter.index']) ? "class=active" : "" }}>
         <a href="{{ route('newsletter.index') }}">
           <i class="fa fa-pencil-square-o"></i> 

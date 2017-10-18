@@ -55,7 +55,7 @@
                 <input type="text" class="form-control" name="name" id="name" value="{{ $detail->name }}">
               </div>
            
-               @if($editorList && Auth::user()->role > 1)
+               @if($editorList && Auth::user()->role > 2)
                 <div class="form-group">
                     <label>Nhân viên<span class="red-star">*</span></label>
                     <div class="clearfix"></div>
@@ -65,6 +65,23 @@
                       <input type="checkbox" name="user_id[]" value="{{ $edi->id }}" id="user_id_{{ $i }}"
                       {{ in_array($edi->id, $cartUser) ? "checked" : "" }}
                       ><label for="user_id_{{ $i }}">{{ $edi->full_name }}</label>
+                    </div>
+                    <?php $i++; ?>
+                    @endforeach
+                    <div class="clearfix"></div>
+                </div>               
+                @endif  
+                <div class="clearfix"></div>
+                @if($modList && Auth::user()->role > 2)
+                <div class="form-group">
+                    <label>MOD<span class="red-star">*</span></label>
+                    <div class="clearfix"></div>
+                    <?php $i = 0; ?>
+                    @foreach($modList as $edi)
+                    <div class="col-md-3">
+                      <input type="checkbox" name="user_id[]" value="{{ $edi->id }}" id="user_id_{{ $edi->id }}"
+                      {{ in_array($edi->id, $cartUser) ? "checked" : "" }}
+                      ><label for="user_id_{{ $edi->id }}">{{ $edi->full_name }}</label>
                     </div>
                     <?php $i++; ?>
                     @endforeach

@@ -30,11 +30,9 @@ class CartController extends Controller
             $query = Cart::whereRaw('1');    
         }        
 
-        if(Auth::user()->role == 1){
+        if(Auth::user()->role < 3){
             $query->join('user_cart', 'user_cart.cart_id', '=' ,'cart.id')->where('user_cart.user_id', $user_id);
         }
-
-        
         
         $name = isset($request->name) && $request->name != '' ? $request->name : '';
         
@@ -48,9 +46,9 @@ class CartController extends Controller
         }else{ // admin
             $editorList = Account::where(['status' => 1, 'role' => 1])->get();
         }
-
+        $modList = Account::where(['status' => 1, 'role' => 1])->get();
         
-        return view('backend.cart.index', compact( 'items', 'type', 'name', 'editorList'));
+        return view('backend.cart.index', compact( 'items', 'type', 'name', 'editorList', 'modList'));
     }
 
     /**
@@ -69,7 +67,8 @@ class CartController extends Controller
         }else{ // admin
             $editorList = Account::where(['status' => 1, 'role' => 1])->get();
         }
-        return view('backend.cart.create', compact('type', 'editorList'));
+        $modList = Account::where(['status' => 1, 'role' => 2])->get();
+        return view('backend.cart.create', compact('type', 'editorList', 'modList'));
     }
 
     /**
@@ -144,7 +143,8 @@ class CartController extends Controller
         }else{ // admin
             $editorList = Account::where(['status' => 1, 'role' => 1])->get();
         }
-        return view('backend.cart.edit', compact( 'detail', 'cartUser', 'editorList'));
+        $modList = Account::where(['status' => 1, 'role' => 2])->get();
+        return view('backend.cart.edit', compact( 'detail', 'cartUser', 'editorList', 'modList'));
     }
 
     /**
