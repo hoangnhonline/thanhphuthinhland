@@ -211,8 +211,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
         Route::get('{id}/destroy', ['as' => 'thuoc-tinh.destroy', 'uses' => 'ThuocTinhController@destroy']);
     });
     Route::group(['prefix' => 'cate'], function () {
-        Route::get('/{loai_id?}', ['as' => 'cate.index', 'uses' => 'CateController@index']);
-        Route::get('/create/{loai_id?}', ['as' => 'cate.create', 'uses' => 'CateController@create']);
+        Route::get('/', ['as' => 'cate.index', 'uses' => 'CateController@index']);
+        Route::get('/create/', ['as' => 'cate.create', 'uses' => 'CateController@create']);
         Route::post('/store', ['as' => 'cate.store', 'uses' => 'CateController@store']);
         Route::get('{id}/edit',   ['as' => 'cate.edit', 'uses' => 'CateController@edit']);
         Route::post('/update', ['as' => 'cate.update', 'uses' => 'CateController@update']);
