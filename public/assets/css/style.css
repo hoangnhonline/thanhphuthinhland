@@ -56,8 +56,8 @@ body {
     word-break: break-word;
     margin: 0;
     color: #313131;
-    font: 14px/20px 'RobotoRegular', 'Helvetica', sans-serif;
-    line-height: 20px;
+    font: 15px/20px 'RobotoRegular', 'Helvetica', sans-serif;
+    line-height: 1.6;
     outline: none;
 }
 a { color: #313131; cursor: pointer; }
@@ -68,7 +68,7 @@ a:focus {
     -moz-transition: all 0.25s;
     transition: all 0.25s;
 }
-p { margin: 0; }
+p { margin: 0 0 10px; }
 select:focus, button:focus, input:focus { outline: none; }
 input[type="text"],
 input[type="email"],
@@ -1728,6 +1728,10 @@ img {
     color: #36a445;
     margin-bottom: 10px;
 }
+.block-detail-info td, th {
+    padding: 5px;
+    border: none;
+}
 .table-customize>tbody>tr:nth-of-type(odd) {
     background-color: #eaf5ff;
 }
@@ -1809,6 +1813,7 @@ img {
     font-size: 12px;
     font-family: 'RobotoRegular';
 }
+.news-with-region-info p {margin:0;}
 .news-with-region-content .news-with-region-info label {
     margin-bottom: 0;
     width: 65px;
