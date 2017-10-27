@@ -44,17 +44,24 @@
                       </ul>
                   </div>
               @endif              
-              <div class="form-group">
-                  <label for="email">Danh mục cha <span class="red-star">*</span></label>
-                  <select class="form-control req" name="parent_id" id="parent_id">
-                      <option value="">-- chọn --</option>
-                      @foreach( $cateParentList as $value )
-                      <option value="{{ $value->id }}"
-                      {{ old('parent_id', $detail->parent_id) == $value->id ? "selected" : "" }}                           
-                      >{{ $value->name }}</option>
-                      @endforeach
-                  </select>
-              </div>
+            <div class="form-group">
+                  <label for="email">Loại <span class="red-star">*</span></label>
+                    <select class="form-control" name="type" id="type">
+                        <option value="1" {{ old('type', $detail->type) == 1 ? "selected" : "" }}>Bán</option>
+                        <option value="2" {{ old('type', $detail->type) == 2 ? "selected" : "" }}>Cho thuê</option>
+                    </select>
+                </div>             
+                <div class="form-group">
+                    <label for="email">Danh mục cha <span class="red-star">*</span></label>
+                    <select class="form-control req" name="estate_type_id" id="estate_type_id">
+                        <option value="">-- chọn --</option>
+                        @foreach( $cateParentList as $value )
+                        <option value="{{ $value->id }}"
+                        {{ old('estate_type_id', $detail->estate_type_id) == $value->id ? "selected" : "" }}                           
+                        >{{ $value->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                <!-- text input -->
               <div class="form-group">
                 <label>Tên danh mục <span class="red-star">*</span></label>
