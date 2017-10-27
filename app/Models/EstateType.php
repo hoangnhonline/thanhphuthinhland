@@ -5,14 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class EstateType extends Model  {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'estate_type';	
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'estate_type';   
 
-	/**
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
@@ -24,5 +24,9 @@ class EstateType extends Model  {
      * @var array
      */
     protected $fillable = [ 'name', 'slug', 'type', 'display_order', 'status', 'meta_id'];
-        
+    
+    public function cate()
+    {
+        return $this->hasMany('App\Models\Cate', 'estate_type_id');
+    }
 }

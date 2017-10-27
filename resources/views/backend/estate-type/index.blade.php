@@ -51,6 +51,7 @@
               <th style="width: 1%">#</th>
               <th style="width: 1%;white-space:nowrap">Thứ tự</th>
               <th>Tên</th>
+              <th style="text-align:center">Danh mục con</th>
               <th width="1%;" style="white-space:nowrap">Thao tác</th>
             </tr>
             <tbody>
@@ -72,6 +73,7 @@
 
                   <p>{{ $item->description }}</p>
                 </td> 
+                <td style="text-align:center"><a class="btn btn-info btn-sm" href="{{ route('cate.index', ['estate_type_id' => $item->id, 'type' => $item->type])}}">{{ $item->cate->count() }}</a></td>
                
                 <td style="white-space:nowrap; text-align:right">                  
                   <a href="{{ route( 'estate-type.edit', [ 'id' => $item->id ]) }}" class="btn-sm btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>                 

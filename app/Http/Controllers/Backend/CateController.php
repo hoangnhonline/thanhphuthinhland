@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Cate;
-use App\Models\LoaiSp;
 use App\Models\MetaData;
-use Helper, File, Session, Auth;
+use App\Models\EstateType;
+use Helper, File, Session, Auth, Image, DB;
 
 class CateController extends Controller
 {
@@ -19,18 +19,36 @@ class CateController extends Controller
     * @return Response
     */
     public function index(Request $request)
-    {        
-        if( $request->loai_id ){
-            $loai_id = $request->loai_id;
-            $loaiSp = LoaiSp::find($loai_id);
-        }else{
-            $loaiSp = LoaiSp::orderBy('id')->first();
-            $loai_id = $loaiSp->id;    
+    {     
+        
+        $type = isset($request->type) ? $request->type : 1;
+        $is_hot = isset($request->is_hot) ? $request->is_hot : null;                   
+        $estate_type_id = isset($request->estate_type_id) ? $request->estate_type_id : null;        
+        if( $estate_type_id ){
+            $estate_type_id = $request->estate_type_id;
+            //$estateTypeDetail = EstateType::find($estate_type_id);
         }
 
-        $items = Cate::where('loai_id', '=', $loai_id)->where('status', 1)->orderBy('display_order')->get();
-        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
-        return view('backend.cate.index', compact( 'items', 'loaiSp' , 'loai_id', 'loaiSpArr'));
+        $name = isset($request->name) && trim($request->name) != '' ? trim($request->name) : '';  
+        
+        $query = Cate::where('status', 1);
+
+        if( $is_hot ){
+            $query->where('is_hot', $is_hot);
+        }        
+       
+        if( $name != ''){
+            $query->where('name', 'LIKE', '%'.$name.'%');            
+        }       
+
+        if( $estate_type_id ){
+            $query->where('estate_type_id', $estate_type_id);           
+        }        
+        $items = $query->orderBy('display_order')->get();       
+
+        $cateParentList = EstateType::where('type', $type)->get(); 
+        //dd($cateParentList);
+        return view('backend.cate.index', compact( 'items', 'estate_type_id', 'type_id', 'name', 'is_hot', 'cateParentList', 'type'));
     }
 
     /**
@@ -39,12 +57,15 @@ class CateController extends Controller
     * @return Response
     */
     public function create(Request $request)
-    {
-        $loai_id = isset($request->loai_id) ? $request->loai_id : 0;
+    {   
+        $estate_type_id = $request->estate_type_id ? $request->estate_type_id : null;
+        $type = $request->type ? $request->type : 1;    
         
-        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
-
-        return view('backend.cate.create', compact( 'loai_id', 'loaiSpArr'));
+        if( $type ){            
+            $cateParentList = EstateType::where('type', $type)->select('id', 'name')->orderBy('display_order', 'desc')->get();
+        }  
+                    
+        return view('backend.cate.create', compact( 'estate_type_id', 'cateParentList', 'estate_type_id', 'type_id', 'type'));
     }
 
     /**
@@ -58,51 +79,30 @@ class CateController extends Controller
         $dataArr = $request->all();
         
         $this->validate($request,[
+            'type' => 'required',
+            'estate_type_id' => 'required',
             'name' => 'required',
-            'slug' => 'required',
+            'slug' => 'required'
         ],
         [
             'name.required' => 'Bạn chưa nhập tên danh mục',
             'slug.required' => 'Bạn chưa nhập slug',
         ]);
-
-        $dataArr['bg_color'] = $dataArr['bg_color'] != '' ? $dataArr['bg_color'] : '#EE484F';
-        
-        $dataArr['alias'] = Helper::stripUnicode($dataArr['name']);
         
         $dataArr['created_user'] = Auth::user()->id;
 
         $dataArr['updated_user'] = Auth::user()->id;
-
-        if($dataArr['icon_url'] && $dataArr['icon_name']){
-            
-            $tmp = explode('/', $dataArr['icon_url']);
-
-            if(!is_dir('uploads/'.date('Y/m/d'))){
-                mkdir('uploads/'.date('Y/m/d'), 0777, true);
-            }
-
-            $destionation = date('Y/m/d'). '/'. end($tmp);
-            
-            File::move(config('icho.upload_path').$dataArr['icon_url'], config('icho.upload_path').$destionation);
-            
-            $dataArr['icon_url'] = $destionation;
-        }
         
-        $dataArr['is_hot'] = isset($dataArr['is_hot']) ? 1 : 0;    
-        $dataArr['menu_ngang'] = isset($dataArr['menu_ngang']) ? 1 : 0;    
-        $dataArr['menu_doc'] = isset($dataArr['menu_doc']) ? 1 : 0;  
-
-        $dataArr['display_order'] = 1;
-
+        $dataArr['is_hot'] = isset($dataArr['is_hot']) ? 1 : 0;       
+        $dataArr['display_order'] = Helper::getNextOrder('cate', ['estate_type_id' => $dataArr['estate_type_id']]);       
         $rs = Cate::create($dataArr);        
         $id = $rs->id;
 
         $this->storeMeta( $id, 0, $dataArr);
 
-        Session::flash('message', 'Tạo mới danh mục thành công');
+        Session::flash('message', 'Tạo mới thành công');
 
-        return redirect()->route('cate.index',[$dataArr['loai_id']]);
+        return redirect()->route('cate.index',['estate_type_id' => $dataArr['estate_type_id'], 'type' => $dataArr['type']]);
     }
 
     /**
@@ -139,14 +139,14 @@ class CateController extends Controller
     */
     public function edit($id)
     {
-        $detail = Cate::find($id);
-        $loaiSpArr = LoaiSp::where('status', 1)->orderBy('display_order')->get();
+          
+        $detail = Cate::find($id);                
+        $cateParentList = EstateType::orderBy('display_order')->get();
         $meta = (object) [];
         if ( $detail->meta_id > 0){
             $meta = MetaData::find( $detail->meta_id );
-        }       
-        $loaiSp = LoaiSp::find($detail->loai_id); 
-        return view('backend.cate.edit', compact( 'detail', 'loaiSpArr', 'meta', 'loaiSp'));
+        }        
+        return view('backend.cate.edit', compact( 'detail', 'meta', 'cateParentList'));
     }
 
     /**
@@ -160,44 +160,28 @@ class CateController extends Controller
     {
         $dataArr = $request->all();
         
-        $this->validate($request,[
+        $this->validate($request,[            
+            'type' => 'required',
+            'estate_type_id' => 'required',
             'name' => 'required',
-            'slug' => 'required',
+            'slug' => 'required',            
+            
         ],
         [
             'name.required' => 'Bạn chưa nhập tên danh mục',
             'slug.required' => 'Bạn chưa nhập slug',
         ]);
 
-        $dataArr['bg_color'] = $dataArr['bg_color'] != '' ? $dataArr['bg_color'] : '#EE484F';
-
-        $dataArr['alias'] = Helper::stripUnicode($dataArr['name']);
-
         $model = Cate::find($dataArr['id']);
 
         $dataArr['updated_user'] = Auth::user()->id;
-        if($dataArr['icon_url'] && $dataArr['icon_name']){
-            
-            $tmp = explode('/', $dataArr['icon_url']);
-
-            if(!is_dir('uploads/'.date('Y/m/d'))){
-                mkdir('uploads/'.date('Y/m/d'), 0777, true);
-            }
-
-            $destionation = date('Y/m/d'). '/'. end($tmp);
-            
-            File::move(config('icho.upload_path').$dataArr['icon_url'], config('icho.upload_path').$destionation);
-            
-            $dataArr['icon_url'] = $destionation;
-        }
-        $dataArr['is_hot'] = isset($dataArr['is_hot']) ? 1 : 0;    
-        $dataArr['menu_ngang'] = isset($dataArr['menu_ngang']) ? 1 : 0;    
-        $dataArr['menu_doc'] = isset($dataArr['menu_doc']) ? 1 : 0;
-
+        
+        $dataArr['is_hot'] = isset($dataArr['is_hot']) ? 1 : 0;   
+        
         $model->update($dataArr);
 
         $this->storeMeta( $dataArr['id'], $dataArr['meta_id'], $dataArr);
-        Session::flash('message', 'Cập nhật danh mục thành công');
+        Session::flash('message', 'Cập nhật thành công');
 
         return redirect()->route('cate.edit', $dataArr['id']);
     }
@@ -215,7 +199,7 @@ class CateController extends Controller
         $model->delete();
 
         // redirect
-        Session::flash('message', 'Xóa danh mục thành công');
-        return redirect()->route('cate.index',[$model->loai_id]);
+        Session::flash('message', 'Xóa thành công');
+        return redirect()->route('cate.index',['estate_type_id' => $model->estate_type_id, 'type' => $model->type]);
     }
 }

@@ -28,6 +28,7 @@ class Product extends Model  {
                             'slug', 
                             'description', 
                             'type', 
+                            'cate_id',
                             'estate_type_id', 
                             'city_id', 
                             'district_id', 
