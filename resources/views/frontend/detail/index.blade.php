@@ -120,7 +120,7 @@
 	    		<h3>Thông tin liên hệ</h3>
 	    		<table class="table table-customize">
 	    			<tr>
-	    				<td><b>Tên liên lạc</b></td>
+	    				<td style="white-space:nowrap"><b>Tên liên lạc</b></td>
 	    				<td>{!! $detail->contact_name !!}</td>
 	    			</tr>
 	    			<tr>
