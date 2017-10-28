@@ -125,7 +125,7 @@
 	    			</tr>
 	    			<tr>
 	    				<td><b>Địa chỉ</b></td>
-	    				<td>{!! Helper::getName($detail->district_id, 'district') !!} - {!! Helper::getName($detail->city_id, 'city') !!}</td>
+	    				<td>{!! $detail->contact_address !!}</td>
 	    			</tr>
 	    			<tr>
 	    				<td><b>Di động</b></td>
