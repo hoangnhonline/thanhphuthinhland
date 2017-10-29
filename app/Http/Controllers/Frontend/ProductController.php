@@ -14,6 +14,8 @@ use App\Models\Project;
 use App\Models\EstateType;
 use App\Models\MetaData;
 use App\Models\Pages;
+use App\Models\Cate;
+
 use Helper, File, Session, Auth;
 use Mail;
 
@@ -172,7 +174,43 @@ class ProductController extends Controller
                 ));
         
     }       
-
+    public function cateChild(Request $request)
+    {
+        $productArr = [];
+        $slug_type = $request->slug_type;
+        $cate_slug = $request->slug;
+        $rsType = EstateType::where('slug', $slug_type)->first();   
+        $rs = Cate::where('estate_type_id', $rsType->id)->where('slug', $cate_slug)->first();
+        $estate_type_id = $rsType->id;
+        
+        if($rs){//danh muc cha
+            $cate_id = $rs->id;
+            $city_id = ($cate_id == 1) ? 23 : null;
+            $query = Product::where('estate_type_id', $estate_type_id)
+                ->where('cate_id', $rs->id)               
+                ->where('product.status', 1)
+                ->leftJoin('product_img', 'product_img.id', '=','product.thumbnail_id') 
+                ->join('estate_type', 'estate_type.id', '=','product.estate_type_id')                
+                ->select('product_img.image_url as image_urls', 'product.*', 'estate_type.slug as slug_loai')              
+                ->where('product_img.image_url', '<>', '')
+                ->orderBy('product.is_hot', 'desc')
+                ->orderBy('product.cart_status', 'asc')
+                ->orderBy('product.id', 'desc');
+                $productList  = $query->paginate(10);
+                $productArr = $productList->toArray();
+            
+            if( $rs->meta_id > 0){
+               $seo = MetaData::find( $rs->meta_id )->toArray();
+            }else{
+                $seo['title'] = $seo['description'] = $seo['keywords'] = $rs->name;
+            }            
+            $type = $rs->type;                                     
+            return view('frontend.cate.parent', compact('productList','productArr', 'rs', 'hoverInfo', 'socialImage', 'seo', 'type', 'estate_type_id', 'city_id'));
+        
+        }else{
+            return redirect()->route('home');
+        }
+    }
      public function newsDetail(Request $request)
     {     
         $id = $request->id;
