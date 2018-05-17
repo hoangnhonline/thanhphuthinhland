@@ -113,8 +113,14 @@
 	@yield('content')	
 
 	@include('frontend.home.footer')	
-	<div class="block-call"><a href="tel:{{ (isset($detail->phone_contact) && $detail->phone_contact != '') ? $detail->phone_contact : $settingArr['hotline'] }}"><i class="fa fa-phone-square"></i>{{ (isset($detail->phone_contact) && $detail->phone_contact != '') ? $detail->phone_contact : $settingArr['hotline'] }} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(chạm để gọi)</a></div><!-- /.block-call -->
-	<a id="return-to-top" class="td-scroll-up" href="javascript:void(0)">
+	<div class="ppocta-ft-fix">
+	<div id="messengerButton"> <a href="http://fb.com/msg/thanhphuthinh" target="_blank" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Messenger Button', 'Mobile']);"><i></i></a></div>
+	<div id="zaloButton"> <a href="http://zalo.me/0911035679" target="_blank" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Zalo Button', 'Mobile']);"><i></i></a></div>
+	<div id="callNowButton"> <a href="tel:0919356178" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Call Button', 'Mobile']);"><i></i></a></div>
+</div><!-- /.block-call -->
+	
+
+<a id="return-to-top" class="td-scroll-up" href="javascript:void(0)">
   		<i class="fa fa-angle-up" aria-hidden="true"></i>
 	</a>
 	<!-- RETURN TO TOP -->

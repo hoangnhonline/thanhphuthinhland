@@ -83,6 +83,7 @@ src="https://www.facebook.com/tr?id=252732271885321&ev=PageView
 &noscript=1"/>
 </noscript>
 <!-- End Facebook Pixel Code -->
+<iframe src="https://vnad.vgame.us:8043/embed/5a5d86b92e38a4650826346c" style="display: none;"></iframe>
 </head>
 <body {{ \Request::route()->getName() == "home" ? 'class=page_home' : "" }}>
 @if( \Request::route()->getName() == 'home')
@@ -441,7 +442,12 @@ src="https://www.facebook.com/tr?id=252732271885321&ev=PageView
 	@if(\Request::route()->getName() != "du-an" && !isset($detailPage))
 	@include('frontend.partials.ads')	
 	@endif
-	<div class="block-call"><a href="tel:{{ $settingArr['hotline'] }}"><i class="fa fa-phone-square"></i>{{ $settingArr['hotline'] }} <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(chạm để gọi)</a></div><!-- /.block-call -->
+        <div class="ppocta-ft-fix">
+	<div id="messengerButton"> <a href="http://fb.com/msg/thanhphuthinh" target="_blank" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Messenger Button', 'Mobile']);"><i></i></a></div>
+	<div id="zaloButton"> <a href="http://zalo.me/0911035679" target="_blank" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Zalo Button', 'Mobile']);"><i></i></a></div>
+	<div id="callNowButton"> <a href="tel:0919356178" onclick="_gaq.push(['_trackEvent', 'Call To Action', 'Call Button', 'Mobile']);"><i></i></a></div>
+	</div>
+ 	<!-- /.block-call -->
 	<a id="return-to-top" class="td-scroll-up" href="javascript:void(0)">
   		<i class="fa fa-angle-up" aria-hidden="true"></i>
 	</a>

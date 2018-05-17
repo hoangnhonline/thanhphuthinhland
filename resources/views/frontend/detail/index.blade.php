@@ -116,6 +116,9 @@
 	    			@endif
 	    		</table>
 	    	</div>
+<!----------vnads------------------------------------>
+<iframe src="https://vnad.vgame.us:8043/embed/5a0bb4a65489e3e01905190e" style="display: none;"></iframe>
+<!----------End-vnads------------------------------------>
 	    	<div class="col-sm-6">
 	    		<h3>Thông tin liên hệ</h3>
 	    		<table class="table table-customize">

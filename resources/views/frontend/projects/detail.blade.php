@@ -12,6 +12,7 @@
 			<li class="active">{!! $detail->name !!}</li>
 		</ul>
 	</article>
+<iframe src="https://vnad.vgame.us:8043/embed/5a5d86b92e38a4650826346c" style="display: none;"></iframe>
 	<div class="block block-title">		  
 		<ul class="nav nav-tabs nav-tabs-langding" id="nav-tabs-langding" role="tablist">
 			<li role="presentation" class="tabs_logo" >
@@ -214,7 +215,7 @@
 										<label>Địa chỉ :</label>
 									</td>
 									<td>
-										Số 11, Đường 3052 Phạm Thế Hiển, Phường 7, Quận 8, Tp. Hồ Chí Minh.
+										34 Trần Hưng Đạo, P. Tân Sơn Nhì, Q. Tân Phú. TP.HCM
 									</td>
 								</tr>
 								<tr>
