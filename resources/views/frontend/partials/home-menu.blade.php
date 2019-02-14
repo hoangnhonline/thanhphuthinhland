@@ -5,6 +5,7 @@
     </div>
     <ul class="nav navbar-nav navbar-left">
         <li class="level0 {{ \Request::route()->getName() == "home" ? "active" : "" }}"><a class="" href="{{ route('home') }}">Trang chủ</a></li><!-- END MENU HOME -->
+	<li class="level0 {{ \Request::route()->getName() == "home"}}"><a class="" href="http://thanhphuthinhland.vn/gioi-thieu-thanh-phu-thinh-land.html">Giới Thiệu</a></li>
         <li class="level0 parent {{ (in_array(\Request::route()->getName(), ['ban', 'danh-muc', 'chi-tiet']) && isset($type) && $type == 1) ? "active" : "" }}">
             <a href="{{ route('ban') }}">BĐS bán</a>
             <ul class="level0 submenu">
